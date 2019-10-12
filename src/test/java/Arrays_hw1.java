@@ -17,18 +17,33 @@ public class Arrays_hw1 {
         Random rnd =new Random();
         int random_number = rnd.nextInt(100);
 
+        int[] origArray = new int[1];
+        int[] suppArray = new int[origArray.length];
+        suppArray[0] = 0;
 
         //Game circle
         while (true) {
-            //enter the number
+            //input the number
             int your_num = in.nextInt();
+
+            //adding Array
+            origArray[origArray.length-1] = your_num;
+            suppArray = origArray;
+            origArray = new int[origArray.length+1];
+            if (origArray.length - 1 >= 0) System.arraycopy(suppArray, 0, origArray, 0, origArray.length - 1);
+            //for(int i = 0; i < origArray.length-1; i++){
+            //    origArray[i] = suppArray[i];
+            //}
+
+
 
             if (your_num < random_number) {
                 System.out.println("Your number is too small. Please, try again.");
             } else if( your_num > random_number){
                 System.out.println("Your number is too big. Please, try again.");
             } else {
-                System.out.printf("Congratulations, %s!", name);
+                System.out.printf("Congratulations, %s!\nYour numbers was: ", name);
+                System.out.println(Arrays.toString(suppArray));
                 break;
             }
         }
