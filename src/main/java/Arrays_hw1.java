@@ -32,8 +32,8 @@ public class Arrays_hw1 {
             origArray = new int[origArray.length+1];
             if (origArray.length - 1 >= 0) System.arraycopy(suppArray, 0, origArray, 0, origArray.length - 1);
             //for(int i = 0; i < origArray.length-1; i++){
-            //    origArray[i] = suppArray[i];
-            //}
+            //            //    origArray[i] = suppArray[i];
+            //            //}
 
 
 
@@ -43,10 +43,23 @@ public class Arrays_hw1 {
                 System.out.println("Your number is too big. Please, try again.");
             } else {
                 System.out.printf("Congratulations, %s!\nYour numbers was: ", name);
+                bubbleSort(suppArray);
                 System.out.println(Arrays.toString(suppArray));
                 break;
             }
         }
 
+    }
+
+    private static void bubbleSort(int[] xArr){
+        for(int i = xArr.length -1; i > 0; i--){
+            for (int j = 0; j < i; j++) {
+                if(xArr[j] < xArr[j+1]){
+                    int tmp = xArr[j];
+                    xArr[j] = xArr[j+1];
+                    xArr[j+1] = tmp;
+                }
+            }
+        }
     }
 }
