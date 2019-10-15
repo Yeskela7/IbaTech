@@ -1,11 +1,9 @@
+package homeworks.homework1;
+
 import java.util.Arrays;
 
 public class Sorting {
-    public static void main(String[] args){
-        //array init
-    }
-    //Selection sort
-    private static void selectionSort(int[] xArr){
+    public static void selectionSort(int[] xArr){
 
         for (int i = 0; i < xArr.length; i++) {
             //temp int init
@@ -27,7 +25,7 @@ public class Sorting {
 
     }
     //Bubble sort
-    private static void bubbleSort(int[] xArr){
+    public static String bubbleSort(int[] xArr){
         for(int i = xArr.length -1; i > 0; i--){
             for (int j = 0; j < i; j++) {
                 if(xArr[j] > xArr[j+1]){
@@ -37,6 +35,6 @@ public class Sorting {
                 }
             }
         }
-        System.out.println(Arrays.toString(xArr));
+        return Arrays.toString(xArr);
     }
 }

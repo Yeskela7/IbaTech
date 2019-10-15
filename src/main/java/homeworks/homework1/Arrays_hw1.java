@@ -1,3 +1,5 @@
+package homeworks.homework1;
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -12,12 +14,11 @@ public class Arrays_hw1 {
         //Hello
         System.out.printf("Hello, %s. Let the game begin! \nAnswer on the questions (number):\n", name);
 
-        Random rnd =new Random();
-        int random_number = rnd.nextInt(7);
+        int random_number = randomNumber(0,7);
 
         Object[][] quest =  {
-                {"10 + 15","2^10","four = 4, one = 3, ten = ?","if 101 = 5, 101 * 11 == ?","33-3","e2-e?","Viente y seis"},
-                {25,1024,10,1111,30,4,26}
+                {"10 + 15","2^10","four = 4, one = 3, ten = ?","if 101 = 5, 101 * 11 = ?","33-3","e2-e?","Viente y seis"},
+                {25,1024,3,1111,30,4,26}
         };
 
         int[] origArray = new int[1];
@@ -27,7 +28,7 @@ public class Arrays_hw1 {
         Object question = quest[0][random_number];
         System.out.println(question);
         int answer = (int) quest[1][random_number];
-
+        //Game
         while(true){
             //input the number
             int your_ans = in.nextInt();
@@ -36,9 +37,7 @@ public class Arrays_hw1 {
             origArray[origArray.length-1] = your_ans;
             suppArray = origArray;
             origArray = new int[origArray.length+1];
-            if (origArray.length - 1 >= 0) System.arraycopy(suppArray,
-                    0, origArray,
-                    0, origArray.length - 1);
+            if (origArray.length - 1 >= 0) arrayCopy(origArray, suppArray);
 
             if(answer > your_ans){
                 System.out.println("Your answer is too small. Please, try again.");
@@ -46,23 +45,30 @@ public class Arrays_hw1 {
                 System.out.println("Your number is too big. Please, try again.");
             } else {
                 System.out.printf("Congratulations, %s!\nYour answers: ", name);
-                bubbleSort(suppArray);
-                System.out.println(Arrays.toString(suppArray));
+                Sorting.bubbleSort(suppArray);
+                printArray(suppArray);
                 break;
             }
 
         }
 
     }
-    private static void bubbleSort(int[] xArr){
-        for(int i = xArr.length -1; i > 0; i--){
-            for (int j = 0; j < i; j++) {
-                if(xArr[j] < xArr[j+1]){
-                    int tmp = xArr[j];
-                    xArr[j] = xArr[j+1];
-                    xArr[j+1] = tmp;
-                }
-            }
-        }
+    private static int randomNumber(int min, int max){
+
+        Random rnd =new Random();
+
+        return rnd.nextInt(max - min + 1) - min;
+    }
+
+    private static int[] arrayCopy(int[] arrOrig, int[] arrCopy){
+        System.arraycopy(
+                arrCopy, 0,
+                arrOrig, 0,
+                arrOrig.length - 1);
+        return arrCopy;
+    }
+
+    private static void printArray(int[] arr){
+        System.out.println(Arrays.toString(arr));
     }
 }
