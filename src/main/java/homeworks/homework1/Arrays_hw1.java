@@ -57,7 +57,7 @@ public class Arrays_hw1 {
 
         Random rnd =new Random();
 
-        return rnd.nextInt(max - min + 1) - min;
+        return rnd.nextInt(max - min + 1) + min;
     }
 
     private static int[] arrayCopy(int[] arrOrig, int[] arrCopy){
