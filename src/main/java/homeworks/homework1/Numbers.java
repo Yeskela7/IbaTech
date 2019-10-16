@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Arrays_hw1 {
+public class Numbers {
     public static  void main(String[] args){
 
         System.out.println("Write your name");

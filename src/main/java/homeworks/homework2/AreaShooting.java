@@ -3,7 +3,7 @@ package homeworks.homework2;
 import java.util.Random;
 import java.util.Scanner;
 
-public class shootingArray {
+public class AreaShooting {
     public static void main(String[] args) {
         //Array parameters
         int height = 2;
@@ -53,16 +53,19 @@ public class shootingArray {
     private static Object[][] createTarget(int height, int weight){
         return new Object[height][weight];
     } //Create the Array
+
     private static void fillAxisX0(int firstPos, int step, Object[][] array){
         for (int i = 0; i < array.length; i++) {
             array[0][i] = firstPos -1 + step++;
         }
     } //fill X axis in range (0;height-1)
+
     private static void fillAxisY0(int firstPos, int step, Object[][] array){
         for (int i = 0; i < array.length; i++) {
             array[i][0] = firstPos -1 + step++;
         }
     } //fill Y axis in range (0;height-1)
+
     private static void fillArray(int firstAxisX, int firstAxisY, String symb, Object[][] array){
 
         for (int i = firstAxisX; i < array.length; i++) {
@@ -71,6 +74,7 @@ public class shootingArray {
             }
         }
     } //fill the Array with "-"
+
     private static void printArrayWall(String wall, Object[][] array){
         for (Object[] objects : array) {
             for (int j = 0; j < array.length; j++) {
@@ -80,29 +84,36 @@ public class shootingArray {
             System.out.println(" ");
         }
     } //create wall between cells
+
     private static int targetAxisX(int startX, int arrayLengthX){
         Random rnd = new Random();
         return rnd.nextInt(arrayLengthX - startX + 1) + 1;
     } //generate X coordinate of target
+
     private static int targetAxisY(int startY,int arrayLengthY){
         Random rnd = new Random();
         return rnd.nextInt(arrayLengthY - startY + 1) + 1;
     } //generate X coordinate of target
+
     private static Object[][] missShoot(int x, int y, Object[][] array){
         array[y][x] = "X";
         return array;
     } //while miss, replace cell with {X}
+
     private static int inputTargetX(){
         Scanner in = new Scanner(System.in);
         return in.nextInt();
     }
+
     private static int inputTargetY(){
         Scanner in = new Scanner(System.in);
         return in.nextInt();
     }
+
     private static void enterX(){
         System.out.println("Enter X coordinate: ");
     }
+
     private static void enterY(){
         System.out.println("Enter Y coordinate: ");
     }
