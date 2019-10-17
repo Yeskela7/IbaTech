@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class AreaShooting {
     public static void main(String[] args) {
         //Array parameters
-        int height = 2;
-        int weight = 2;
+        int height = 6;
+        int weight = 6;
 
         Object[][] target = createTarget(height, weight); //Create the Array
         fillArray(0,0,"-",target); //fill the Array with "-"

@@ -18,7 +18,7 @@ public class TaskPlanner {
 
 
         while(input){
-            System.out.println("Please, input the day of the week:");
+            System.out.println("\nPlease, input the day of the week:");
             String inDay = in.nextLine();
             String[] command = inDay.split(" ");
             switch (command[0].toLowerCase().trim()){
