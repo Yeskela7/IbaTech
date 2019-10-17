@@ -12,17 +12,14 @@ class Human {
     private Human father;
     private String[][] schedule;
 
+
+    private String getFullName(){
+        return name + " " + surname;
+    }
+
     @Override
     public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
-                ", iq=" + iq +
-                ", pet=" + pet +
-                ", mother=" + mother.name + " " +  mother.surname +
-                ", father=" + father.name + " " + father.surname +
-                '}';
+        return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, pet=%s, mother=%s, father=%s}", name, surname, year, iq, pet, mother.getFullName(), father.getFullName());// TODO fix
     }
 
     public Human() {
@@ -64,9 +61,12 @@ class Human {
 
     void describePet(){
         if(pet.trickLevel >= 50){
-            System.out.printf("I have a %s, he is %d years old, he is very sly", pet.species, pet.age);
+            System.out.printf("I have a %s, he is %d years old, he is very sly\n", pet.species, pet.age);
         }else{
-            System.out.printf("I have a %s, he is %d years old, he is almost not sly", pet.species, pet.age);
+            System.out.printf("I have a %s, he is %d years old, he is almost not sly\n", pet.species, pet.age);
         }
+    }
+    void greetPet(){
+        System.out.printf("Hello, %s\n", pet.nickname);
     }
 }
