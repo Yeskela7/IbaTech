@@ -3,11 +3,11 @@ package homeworks.homework4;
 import java.util.Random;
 
 class Human {
-    private  String name;
+    private String name;
     private String surname;
     private int year;
     private int iq;
-    private Pet pet;
+    private Pet pet ;
     private Human mother;
     private Human father;
     private String[][] schedule;
@@ -18,11 +18,26 @@ class Human {
     }
 
     @Override
-    public String toString() {
-        return String.format("Human{name='%s', surname='%s', year=%d, iq=%d, pet=%s, mother=%s, father=%s}", name, surname, year, iq, pet, mother.getFullName(), father.getFullName());// TODO fix
+    public String toString() {if(name == null){
+        return "no info\n";
+    }else if (pet == null){
+        return "Human{" + "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", year=" + year +
+                "}";
+    }else {
+        return "Human{" + "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", year=" + year +
+                ", iq=" + iq +
+                ", pet=" + pet +
+                ", mother=" + mother.getFullName() +
+                ", father=" + father.getFullName() +
+                "}";}
+
     }
 
-    public Human() {
+    Human() {
     }
 
     Human(String name, String surname, int year) {
@@ -43,20 +58,18 @@ class Human {
     }
 
     boolean feedPet(){
-        boolean feeding = false;
         Random random = new Random();
         int trick = random.nextInt(101);
         int petTrick = pet.trickLevel;
         //System.out.println(trick);
         if(trick < petTrick){
-            feeding =true;
             System.out.printf("Hm... I will feed  %s\n", pet.nickname);
+            return true;
         }else {
-            feeding = false;
-            System.out.println("I think Jack is not hungry.\n");
+            System.out.println("I think Jack is not hungry.");
+            return false;
         }
-        //System.out.println(feeding);
-        return feeding;
+
     }
 
     void describePet(){
