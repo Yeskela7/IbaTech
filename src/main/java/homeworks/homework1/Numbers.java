@@ -37,8 +37,8 @@ public class Numbers {
             origArray[origArray.length-1] = your_ans;
             suppArray = origArray;
             origArray = new int[origArray.length+1];
-            if (origArray.length - 1 >= 0) arrayCopy(origArray, suppArray);
 
+            if (origArray.length - 1 >= 0) arrayCopy(origArray, suppArray);
             if(answer > your_ans){
                 System.out.println("Your answer is too small. Please, try again.");
             } else if(answer < your_ans){

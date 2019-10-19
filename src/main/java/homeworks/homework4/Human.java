@@ -7,33 +7,35 @@ class Human {
     private String surname;
     private int year;
     private int iq;
-    private Pet pet ;
+    private Pet pet;
     private Human mother;
     private Human father;
     private String[][] schedule;
 
 
-    private String getFullName(){
+    private String getFullName() {
         return name + " " + surname;
     }
 
     @Override
-    public String toString() {if(name == null){
-        return "no info\n";
-    }else if (pet == null){
-        return "Human{" + "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
-                "}";
-    }else {
-        return "Human{" + "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", year=" + year +
-                ", iq=" + iq +
-                ", pet=" + pet +
-                ", mother=" + mother.getFullName() +
-                ", father=" + father.getFullName() +
-                "}";}
+    public String toString() {
+        if (name == null) {
+            return "no info\n";
+        } else if (pet == null) {
+            return "Human{" + "name='" + name + '\'' +
+                    ", surname='" + surname + '\'' +
+                    ", year=" + year +
+                    "}";
+        } else {
+            return "Human{" + "name='" + name + '\'' +
+                    ", surname='" + surname + '\'' +
+                    ", year=" + year +
+                    ", iq=" + iq +
+                    ", pet=" + pet +
+                    ", mother=" + mother.getFullName() +
+                    ", father=" + father.getFullName() +
+                    "}";
+        }
 
     }
 
@@ -57,29 +59,30 @@ class Human {
         this.schedule = schedule;
     }
 
-    boolean feedPet(){
+    boolean feedPet() {
         Random random = new Random();
         int trick = random.nextInt(101);
         int petTrick = pet.trickLevel;
         //System.out.println(trick);
-        if(trick < petTrick){
+        if (trick < petTrick) {
             System.out.printf("Hm... I will feed  %s\n", pet.nickname);
             return true;
-        }else {
-            System.out.println("I think Jack is not hungry.");
+        } else {
+            System.out.printf("I think %s is not hungry.", pet.nickname);
             return false;
         }
 
     }
 
-    void describePet(){
-        if(pet.trickLevel >= 50){
+    void describePet() {
+        if (pet.trickLevel >= 50) {
             System.out.printf("I have a %s, he is %d years old, he is very sly\n", pet.species, pet.age);
-        }else{
+        } else {
             System.out.printf("I have a %s, he is %d years old, he is almost not sly\n", pet.species, pet.age);
         }
     }
-    void greetPet(){
+
+    void greetPet() {
         System.out.printf("Hello, %s\n", pet.nickname);
     }
 }

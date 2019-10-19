@@ -12,7 +12,7 @@ class Pet {
 
     @Override
     public String toString() {
-        return species +"{" +
+        return species + "{" +
                 "nickname='" + nickname + '\'' +
                 ", age=" + age +
                 ", trickLevel=" + trickLevel +
@@ -36,15 +36,15 @@ class Pet {
     Pet() {
     }
 
-    static void eat(){
+    static void eat() {
         System.out.println("I am eating\n");
     }
 
-    void respond(){
+    void respond() {
         System.out.printf("Hello, owner. I am - %s. I miss you!\n", this.nickname);
     }
 
-    static void foul(){
+    static void foul() {
         System.out.println("I need to cover it up\n");
     }
 

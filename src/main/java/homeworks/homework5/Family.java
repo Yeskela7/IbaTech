@@ -7,46 +7,99 @@ public class Family {
 
     private Human father = new Human();
     private Human mother = new Human();
-    private Human[] children = new Human[0];
     private Pet pet = new Pet();
 
-    public Family(Human father, Human mother) {
+    private Human[] children;
+    private int childNumber;
+
+    Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
+        this.pet = new Pet();
+        this.children = new Human[childNumber];
+
+    }
+
+    void addChild(Human child) {
+        this.children = Arrays.copyOf(children, children.length + 1);
+        children[children.length - 1] = child;
+        this.childNumber++;
+
+    }
+
+    void deleteChild(int index) {
+        Human[] newChildren = new Human[this.children.length - 1];
+        System.arraycopy(this.children, 0, newChildren, 0, index);
+        System.arraycopy(this.children, index + 1, newChildren, index, this.children.length - index - 1);
+        this.children = newChildren;
     }
 
     @Override
     public String toString() {
-        return "Family{" + "father=" + father +
-                ", mother=" + mother +
-                '}';
+        if (childNumber == 0 && pet.getSpecies() == null) {
+            return "Family{" + "father=" + father.getFullName() +
+                    ", mother=" + mother.getFullName() +
+                    '}';
+        } else if (childNumber == 0 && pet.getSpecies() != null) {
+            return "Family{" + "father=" + father.getFullName() +
+                    ", mother=" + mother.getFullName() +
+                    ", pet=" + pet.getNickname() +
+                    '}';
+        } else if (childNumber > 0 && pet.getSpecies() == null) {
+            return "Family{" + "father=" + father.getFullName() +
+                    ", mother=" + mother.getFullName() +
+                    ", children=" + Arrays.toString(children) +
+                    '}';
+        } else {
+            return "Family{" + "father=" + father.getFullName() +
+                    ", mother=" + mother.getFullName() +
+                    ", pet=" + pet.getNickname() +
+                    ", children=" + Arrays.toString(children) +
+                    '}';
+        }
+    }
+
+    public Human getFather() {
+        return father;
+    }
+
+    public Human getMother() {
+        return mother;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public Human[] getChildren() {
+        return children;
     }
 
 
-
-
-    boolean feedPet(){
+    boolean feedPet() {
         Random random = new Random();
         int trick = random.nextInt(101);
         int petTrick = pet.getTrickLevel();
         //System.out.println(trick);
-        if(trick < petTrick){
+        if (trick < petTrick) {
             System.out.printf("Hm... I will feed  %s\n", pet.getNickname());
             return true;
-        }else {
-            System.out.println("I think Jack is not hungry.");
+        } else {
+            System.out.printf("I think %s is not hungry.", pet.getNickname());
             return false;
         }
 
     }
-    void describePet(){
-        if(pet.getTrickLevel() >= 50){
+
+    void describePet() {
+        if (pet.getTrickLevel() >= 50) {
             System.out.printf("I have a %s, he is %d years old, he is very sly\n", pet.getSpecies(), pet.getAge());
-        }else{
+        } else {
             System.out.printf("I have a %s, he is %d years old, he is almost not sly\n", pet.getSpecies(), pet.getAge());
         }
     }
-    void greetPet(){
+
+    void greetPet() {
         System.out.printf("Hello, %s\n", pet.getNickname());
     }
 }
