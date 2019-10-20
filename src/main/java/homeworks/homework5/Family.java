@@ -5,36 +5,66 @@ import java.util.Random;
 
 public class Family {
 
-    private Human father = new Human();
-    private Human mother = new Human();
+    private Human father;
+    private Human mother;
     private Pet pet = new Pet();
     private Human[] children;
     private int childNumber;
 
+    public Human getFather() {
+        return father;
+    }
 
-    public Family(Human father, Human mother,Human[] children) {
+    public Human getMother() {
+        return mother;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+
+    public Human[] getChildren() {
+        return children;
+    }
+
+    public void setChildren(Human[] children) {
+        this.children = children;
+    }
+
+    public int getChildNumber() {
+        return childNumber;
+    }
+
+    public void setChildNumber(int childNumber) {
+        this.childNumber = childNumber;
+    }
+
+    Family(Human father, Human mother, Human[] children) {
         this.father = father;
         this.mother = mother;
         this.children = new Human[childNumber];
     }
 
-    public Family(Human father, Human mother) {
+    Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
         this.children = new Human[childNumber];
-        this.pet = pet;
-        Family family = new Family(this.father, this.father, this.children);
+        this.pet = new Pet();
+        Family family = new Family(this.father, this.mother, this.children);
         father.setFamily(family);
         mother.setFamily(family);
+
     }
 
 
     void addChild(Human child) {
+        child.setFamily(father.getFamily());
         this.children = Arrays.copyOf(children, children.length + 1);
         children[children.length - 1] = child;
-        this.childNumber++;
-
-
+        child.getFamily().setChildren(children);
+        father.getFamily().setChildNumber(children.length);
+        childNumber++;
     }
 
     void deleteChild(int index) {
@@ -42,20 +72,25 @@ public class Family {
         System.arraycopy(this.children, 0, newChildren, 0, index);
         System.arraycopy(this.children, index + 1, newChildren, index, this.children.length - index - 1);
         this.children = newChildren;
+        father.getFamily().setChildren(this.children);
+    }
+
+    int countFamily() {
+        return 2 + this.childNumber;
     }
 
     @Override
     public String toString() {
-        if (childNumber == 0 && pet.getSpecies() == null) {
+        if (this.childNumber == 0 && pet.getSpecies() == null) {
             return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     '}';
-        } else if (childNumber == 0 && pet.getSpecies() != null) {
+        } else if (this.childNumber == 0 && pet.getSpecies() != null) {
             return "Family{" + "father=" + father +
-                    ", mother=" + mother  +
+                    ", mother=" + mother +
                     ", pet=" + pet +
                     '}';
-        } else if (childNumber > 0 && pet.getSpecies() == null) {
+        } else if (this.childNumber != 0 && pet.getSpecies() == null) {
             return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", children=" + Arrays.toString(children) +
@@ -68,7 +103,6 @@ public class Family {
                     '}';
         }
     }
-
 
     boolean feedPet() {
         Random random = new Random();

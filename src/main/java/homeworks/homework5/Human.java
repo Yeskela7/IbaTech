@@ -11,16 +11,11 @@ class Human {
 
     private Family family;
 
-
-
-//TODO fix family info
-
-
-    public Family getFamily() {
+    Family getFamily() {
         return family;
     }
 
-    public void setFamily(Family family) {
+    void setFamily(Family family) {
         this.family = family;
     }
 
@@ -28,21 +23,18 @@ class Human {
         this.name = name;
         this.surname = surname;
         this.year = year;
-        this.family =getFamily();
     }
 
-    public Human() {
+    Human() {
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+    Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
         this.iq = iq;
         this.schedule = schedule;
-        this.family =getFamily();
     }
-
 
     public String getFullName() {
         return name + " " + surname;
@@ -60,17 +52,15 @@ class Human {
         } else if (schedule[0][0] == null) {
             return "Human{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
-                    ", year=" + year  +
+                    ", year=" + year +
                     "}";
         } else {
             return "Human{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
                     ", year=" + year +
-                    ", iq=" + iq  +
+                    ", iq=" + iq +
                     ", schedule=" + Arrays.deepToString(schedule) +
                     "}";
         }
-
     }
-
 }
