@@ -1,5 +1,3 @@
-package homeworks.homework5;
-
 public class Main {
     public static void main(String[] args) {
         Pet dog = new Pet("Dog", "Rock", 5, 50, new String[]{"eat, drink, sleep"});
@@ -10,12 +8,8 @@ public class Main {
         Human child1 = new Human("Toni", "Sinatra", 1943, 101, new String[][]{{"Day_1", "Task_1"}, {"Day_2", "Task_2"}});
 
         Family sen = new Family(father,mother);
+        System.out.println(child);
         sen.addChild(child);
-//        father.setFamily(sen);
-        System.out.println(father.getFamily());
-        System.out.println(mother.getFamily());
-        System.out.println(child.getFamily());
-
-
+        System.out.println(sen);
     }
 }

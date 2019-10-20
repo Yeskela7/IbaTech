@@ -1,5 +1,3 @@
-package homeworks.homework5;
-
 import java.util.Arrays;
 
 class Human {
@@ -28,7 +26,6 @@ class Human {
         this.name = name;
         this.surname = surname;
         this.year = year;
-        this.family =getFamily();
     }
 
     public Human() {
@@ -40,7 +37,6 @@ class Human {
         this.year = year;
         this.iq = iq;
         this.schedule = schedule;
-        this.family =getFamily();
     }
 
 

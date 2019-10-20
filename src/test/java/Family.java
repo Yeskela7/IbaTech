@@ -1,5 +1,3 @@
-package homeworks.homework5;
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -12,10 +10,7 @@ public class Family {
     private int childNumber;
 
 
-    public Family(Human father, Human mother,Human[] children) {
-        this.father = father;
-        this.mother = mother;
-        this.children = new Human[childNumber];
+    public Family() {
     }
 
     public Family(Human father, Human mother) {
@@ -23,9 +18,6 @@ public class Family {
         this.mother = mother;
         this.children = new Human[childNumber];
         this.pet = pet;
-        Family family = new Family(this.father, this.father, this.children);
-        father.setFamily(family);
-        mother.setFamily(family);
     }
 
 
@@ -33,7 +25,6 @@ public class Family {
         this.children = Arrays.copyOf(children, children.length + 1);
         children[children.length - 1] = child;
         this.childNumber++;
-
 
     }
 
