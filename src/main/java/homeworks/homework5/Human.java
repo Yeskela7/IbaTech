@@ -1,6 +1,7 @@
 package homeworks.homework5;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 class Human {
     private String name;
@@ -40,6 +41,24 @@ class Human {
         return name + " " + surname;
     }
 
+
+    @Override
+    public boolean equals(Object that) {
+        if (that == null || getClass() != that.getClass()) return false;
+        if (this == that) return true;
+        Human human = (Human) that;
+        return year == human.year &&
+                Objects.equals(name, human.name) &&
+                Objects.equals(surname, human.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode() * surname.hashCode() * year * -1 + year;
+    }
+
+
+
     @Override
     public String toString() {
         if (name == null) {
@@ -62,5 +81,8 @@ class Human {
                     ", schedule=" + Arrays.deepToString(schedule) +
                     "}";
         }
+
+
+
     }
 }

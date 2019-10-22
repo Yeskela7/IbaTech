@@ -1,4 +1,4 @@
-package homeworks.homework5;
+package homeworks.homework6;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -52,11 +52,14 @@ public class Family {
     }
 
     void deleteChild(int index) {
-        Human[] newChildren = new Human[this.children.length - 1];
-        children[index].setFamily(null);
-        System.arraycopy(this.children, 0, newChildren, 0, index);
-        System.arraycopy(this.children, index + 1, newChildren, index, this.children.length - index - 1);
-        this.children = newChildren;
+        if(index > children.length - 1){
+            this.children = children;
+        }else {
+            Human[] newChildren = new Human[this.children.length - 1];
+            System.arraycopy(this.children, 0, newChildren, 0, index);
+            System.arraycopy(this.children, index + 1, newChildren, index, this.children.length - index - 1);
+            this.children = newChildren;
+        }
     }
 
     int countFamily() {
@@ -132,5 +135,11 @@ public class Family {
         int result = Objects.hash(father, mother);
         result = 21 * result + Arrays.hashCode(children) * children.length * -1;
         return result;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println(this);
+        super.finalize();
     }
 }

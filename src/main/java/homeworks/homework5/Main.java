@@ -3,7 +3,7 @@ package homeworks.homework5;
 
 public class Main {
     public static void main(String[] args) {
-        Pet dog = new Pet("Dog", "Rock", 5, 50, new String[]{"eat, drink, sleep"});
+        Pet dog = new Pet("Dog","Jarly", 5,50, new String[]{"eat", "sleep"});
         Human grandfather = new Human();
         Human father = new Human("Frank", "Sinatra", 1915);
         Human mother = new Human("Barbara", "Sinatra", 1919);
@@ -19,6 +19,11 @@ public class Main {
         sinatraFamily.addChild(child2);
         System.out.println(child2.getFamily());
         sinatraFamily.deleteChild(0);
+        System.out.println(child1.getFamily());
         System.out.println(mother.getFamily());
+        System.out.println(father.hashCode());
+        System.out.println(sinatraFamily.hashCode());
+        sinatraFamily.addChild(child2);
+        System.out.println(sinatraFamily.hashCode());
     }
 }

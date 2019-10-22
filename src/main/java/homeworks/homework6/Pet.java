@@ -1,12 +1,11 @@
-package homeworks.homework5;
+package homeworks.homework6;
 
 
-import java.util.Arrays;
 import java.util.Objects;
 
-class Pet {
+public class Pet {
 
-    private String species;
+    private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
@@ -16,7 +15,7 @@ class Pet {
         return nickname;
     }
 
-    public String getSpecies() {
+    public Species getSpecies() {
         return species;
     }
 
@@ -35,12 +34,12 @@ class Pet {
     public Pet() {
     }
 
-    public Pet(String species, String nickname) {
+    public Pet(Species species, String nickname) {
         this.species = species;
         this.nickname = nickname;
     }
 
-    public Pet(String species, String nickname, int age, int trickLevel, String[] habits) {
+    public Pet(Species species, String nickname, int age, int trickLevel, String[] habits) {
         this.species = species;
         this.nickname = nickname;
         this.age = age;
@@ -61,31 +60,13 @@ class Pet {
     }
 
     @Override
-    public String toString() {
-        if(nickname == null){
-            return "no info";
-        } else if(age == 0){
-            return "Pet{" + "species='" + species + '\'' +
-                    ", nickname='" + nickname + '\'' +
-                    '}';
-        } else {
-            return "Pet{" + "species='" + species + '\'' +
-                    ", nickname='" + nickname + '\'' +
-                    ", age=" + age +
-                    ", trickLevel=" + trickLevel +
-                    ", habits=" + Arrays.toString(habits) +
-                    '}';
-        }
-    }
-
-    @Override
     public boolean equals(Object that) {
         if (that == null || getClass() != that.getClass()) return false;
         if (this == that) return true;
         Pet pet = (Pet) that;
         return age == pet.age &&
                 trickLevel == pet.trickLevel &&
-                species.equals(pet.species) &&
+                species == pet.species &&
                 Objects.equals(nickname, pet.nickname);
     }
 
@@ -94,5 +75,9 @@ class Pet {
         return species.hashCode() * age * nickname.hashCode() * trickLevel * -1;
     }
 
-
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("finalize " + this);
+        super.finalize();
+    }
 }

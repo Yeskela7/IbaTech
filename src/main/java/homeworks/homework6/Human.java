@@ -1,6 +1,10 @@
-import java.util.Arrays;
+package homeworks.homework6;
 
-class Human {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Objects;
+
+public class Human {
     private String name;
     private String surname;
     private int year;
@@ -9,16 +13,11 @@ class Human {
 
     private Family family;
 
-
-
-//TODO fix family info
-
-
-    public Family getFamily() {
+    Family getFamily() {
         return family;
     }
 
-    public void setFamily(Family family) {
+    void setFamily(Family family) {
         this.family = family;
     }
 
@@ -28,10 +27,10 @@ class Human {
         this.year = year;
     }
 
-    public Human() {
+    Human() {
     }
 
-    public Human(String name, String surname, int year, int iq, String[][] schedule) {
+    Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -39,9 +38,30 @@ class Human {
         this.schedule = schedule;
     }
 
-
     public String getFullName() {
         return name + " " + surname;
+    }
+
+
+    @Override
+    public boolean equals(Object that) {
+        if (that == null || getClass() != that.getClass()) return false;
+        if (this == that) return true;
+        Human human = (Human) that;
+        return year == human.year &&
+                Objects.equals(name, human.name) &&
+                Objects.equals(surname, human.surname);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode() * surname.hashCode() * year * -1 + year;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("finalize " + this);
+        super.finalize();
     }
 
     @Override
@@ -53,20 +73,21 @@ class Human {
                     ", surname='" + surname + '\'' +
                     ", year=" + year +
                     "}";
-        } else if (schedule[0][0] == null) {
+        } else if (schedule == null) {
             return "Human{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
-                    ", year=" + year  +
+                    ", year=" + year +
                     "}";
         } else {
             return "Human{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
                     ", year=" + year +
-                    ", iq=" + iq  +
+                    ", iq=" + iq +
                     ", schedule=" + Arrays.deepToString(schedule) +
                     "}";
         }
 
-    }
 
+
+    }
 }

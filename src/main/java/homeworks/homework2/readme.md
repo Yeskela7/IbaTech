@@ -15,12 +15,12 @@ Write a program called "shooting at the square."
 
 An example of console output:
 
-` 0 | 1 | 2 | 3 | 4 | 5 |` 
-` 1 | - | - | - | - | - |` 
-` 2 | - | * | * | - | - |` 
-` 3 | * | - | - | * | - |` 
-` 4 | - | - | - | - | * |` 
-` 5 | * | - | * | - | - |`
+` 0 | 1 | 2 | 3 | 4 | 5 |`   
+` 1 | - | - | - | - | - |`   
+` 2 | - | * | * | - | - |`   
+` 3 | * | - | - | * | - |`   
+` 4 | - | - | - | - | * |`   
+` 5 | * | - | * | - | - |`  
   
 
 #### Advanced complexity. Not necessary for the realization:
