@@ -33,7 +33,6 @@ public class Family {
     }
 
 
-
     Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
@@ -52,9 +51,9 @@ public class Family {
     }
 
     void deleteChild(int index) {
-        if(index > children.length - 1){
+        if (index > children.length - 1) {
             this.children = children;
-        }else {
+        } else {
             Human[] newChildren = new Human[this.children.length - 1];
             System.arraycopy(this.children, 0, newChildren, 0, index);
             System.arraycopy(this.children, index + 1, newChildren, index, this.children.length - index - 1);

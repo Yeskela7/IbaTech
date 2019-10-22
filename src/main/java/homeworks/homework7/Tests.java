@@ -1,9 +1,10 @@
-package homeworks.homework6;
+package homeworks.homework7;
 
+import homeworks.homework7.humans.Human;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class Tests {
 

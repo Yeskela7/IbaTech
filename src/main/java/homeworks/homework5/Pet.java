@@ -62,9 +62,9 @@ class Pet {
 
     @Override
     public String toString() {
-        if(nickname == null){
+        if (nickname == null) {
             return "no info";
-        } else if(age == 0){
+        } else if (age == 0) {
             return "Pet{" + "species='" + species + '\'' +
                     ", nickname='" + nickname + '\'' +
                     '}';
