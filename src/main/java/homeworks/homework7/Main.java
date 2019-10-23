@@ -10,7 +10,8 @@ public class Main {
         Human grandfather = new Human();
         Human father = new Human("Frank", "Sinatra", 1915);
         Human mother = new Human("Barbara", "Sinatra", 1919);
-        Human child1 = new Human("Nancy", "Sinatra", 1940, 100, new String[][]{{DayOfWeek.MONDAY.name(), "Task_1"}, {DayOfWeek.THURSDAY.name(), "Task_2"}});
+        Human child1 = new Human("Nancy", "Sinatra", 1940, 100,
+                new String[][]{{DayOfWeek.MONDAY.name(), "Task_1"}, {DayOfWeek.THURSDAY.name(), "Task_2"}});
 
         System.out.println(dog.getSpecies());
     }

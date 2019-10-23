@@ -1,5 +1,7 @@
-package homeworks.homework7;
+package homework7;
 
+import homeworks.homework7.DayOfWeek;
+import homeworks.homework7.Family;
 import homeworks.homework7.humans.Human;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +14,7 @@ public class Tests {
     private Human mother;
     private Human child1;
     private Family family;
+    private String[][] schedule;
 
     @Before
     public void before() {

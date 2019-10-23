@@ -13,7 +13,7 @@ public class Human {
 
     private Family family;
 
-    Family getFamily() {
+    public Family getFamily() {
         return family;
     }
 
@@ -21,7 +21,7 @@ public class Human {
         this.family = family;
     }
 
-    Human(String name, String surname, int year) {
+    public Human(String name, String surname, int year) {
         this.name = name;
         this.surname = surname;
         this.year = year;
@@ -30,7 +30,7 @@ public class Human {
     Human() {
     }
 
-    Human(String name, String surname, int year, int iq, String[][] schedule) {
+    public Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
         this.year = year;

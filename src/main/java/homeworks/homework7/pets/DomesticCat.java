@@ -15,7 +15,7 @@ public final class DomesticCat extends Pet implements Foulible {
     }
 
     public DomesticCat(String nickname) {
-        this.species = Species.DOMESTICCAT;//++
+        this.species = Species.DOMESTICCAT;
         this.nickname = nickname;
     }
 

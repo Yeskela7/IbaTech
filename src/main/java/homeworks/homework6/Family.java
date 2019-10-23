@@ -33,7 +33,7 @@ public class Family {
     }
 
 
-    Family(Human father, Human mother) {
+    public Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
         this.children = new Human[0];
@@ -44,13 +44,13 @@ public class Family {
     }
 
 
-    void addChild(Human child) {
+    public void addChild(Human child) {
         this.children = Arrays.copyOf(children, children.length + 1);
         children[children.length - 1] = child;
         child.setFamily(this);
     }
 
-    void deleteChild(int index) {
+    public void deleteChild(int index) {
         if (index > children.length - 1) {
             this.children = children;
         } else {
@@ -61,7 +61,7 @@ public class Family {
         }
     }
 
-    int countFamily() {
+    public int countFamily() {
         return 2 + this.children.length;
     }
 

@@ -5,7 +5,7 @@ import homeworks.homework7.Species;
 
 import java.util.Objects;
 
-public abstract class Pet { //+
+public abstract class Pet {
 
     private Species species;
     private String nickname;
@@ -38,11 +38,11 @@ public abstract class Pet { //+
     }
 
     public Pet(String nickname) {
-        this.species = Species.UNKNOWN;//++
+        this.species = Species.UNKNOWN;
         this.nickname = nickname;
     }
 
-    public Pet(String nickname, int age, int trickLevel, String[] habits) {//++
+    public Pet(String nickname, int age, int trickLevel, String[] habits) {
         this.species = Species.UNKNOWN;
         this.nickname = nickname;
         this.age = age;
@@ -60,6 +60,7 @@ public abstract class Pet { //+
 
     @Override
     public boolean equals(Object that) {
+        if(this.hashCode() == that.hashCode()) return true;
         if (that == null || getClass() != that.getClass()) return false;
         if (this == that) return true;
         Pet pet = (Pet) that;
@@ -71,7 +72,7 @@ public abstract class Pet { //+
 
     @Override
     public int hashCode() {
-        return species.hashCode() * age * nickname.hashCode() * trickLevel * -1;
+        return species.hashCode() * age * nickname.hashCode() * trickLevel * -11;
     }
     @Override
     protected void finalize() throws Throwable {

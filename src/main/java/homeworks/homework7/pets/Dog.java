@@ -10,13 +10,12 @@ public final class Dog extends Pet implements Foulible {
     private int trickLevel;
     private String[] habits;
 
-    //constructor
     public Dog() {
         this.species = Species.DOG;;
     }
 
     public Dog(String nickname) {
-        this.species = Species.DOG;//++
+        this.species = Species.DOG;
         this.nickname = nickname;
     }
 

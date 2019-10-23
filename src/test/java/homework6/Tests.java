@@ -1,5 +1,8 @@
-package homeworks.homework6;
+package homework6;
 
+import homeworks.homework6.DayOfWeek;
+import homeworks.homework6.Family;
+import homeworks.homework6.Human;
 import org.junit.Before;
 import org.junit.Test;
 

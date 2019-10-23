@@ -17,7 +17,7 @@ public final class Fish extends Pet{
     }
 
     public Fish(String nickname) {
-        this.species = Species.FISH;//++
+        this.species = Species.FISH;
         this.nickname = nickname;
     }
 

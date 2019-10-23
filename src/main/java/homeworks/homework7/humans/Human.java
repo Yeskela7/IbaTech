@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.Random;
 
-//TODO создание людей
 public class Human {
     private String name;
     private String surname;
@@ -35,6 +34,13 @@ public class Human {
     public Human() {
     }
 
+    public Human(String name, String surname, int year, int iq) {
+        this.name = name;
+        this.surname = surname;
+        this.year = year;
+        this.iq = iq;
+    }
+
     public Human(String name, String surname, int year, int iq, String[][] schedule) {
         this.name = name;
         this.surname = surname;
@@ -47,7 +53,6 @@ public class Human {
         return name + " " + surname;
     }
 
-    //TODO переопределить у FAMİLY
     boolean feedPet() {
         Random random = new Random();
         int trick = random.nextInt(101);
@@ -78,6 +83,7 @@ public class Human {
 
     @Override
     public boolean equals(Object that) {
+        if(this.hashCode() == that.hashCode()) return true;
         if (that == null || getClass() != that.getClass()) return false;
         if (this == that) return true;
         Human human = (Human) that;
@@ -88,7 +94,7 @@ public class Human {
 
     @Override
     public int hashCode() {
-        return name.hashCode() * surname.hashCode() * year * -1 + year;
+        return name.hashCode() * surname.hashCode() * year * -11;
     }
 
     @Override
@@ -110,6 +116,7 @@ public class Human {
             return "Human{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
                     ", year=" + year +
+                    ", iq=" + iq +
                     "}";
         } else {
             return "Human{" + "name='" + name + '\'' +
