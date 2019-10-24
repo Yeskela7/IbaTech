@@ -1,21 +1,29 @@
 package homeworks.homework7.humans;
 
-public enum WomanNames {
-    Micaela, Petra, Tessie,
-    Samella, Stepanie, Bebe,
-    Latonia, Laurel, Belkis ,
-    Katelynn, Nam, Franchesca,
-    Elizebeth, Jetta, Zenobia,
-    Wei, Hiedi, Sadie,
-    Nicki, Leda, Cheree,
-    Charlott, Carie, Edwina,
-    Julia, Portia, Mirtha,
-    Tracee, Jovan, Cleta,
-    Thersa, Louisa, Perla,
-    Racquel, Mazie, Adelaida,
-    Barbara, Margret, Sook,
-    Naomi, Josphine, Francoise,
-    Suzie, Sarah, Olga,
-    Minta, Theressa, Kerrie,
-    Charlesetta,Cornelia
+import java.util.Arrays;
+import java.util.List;
+
+public class WomanNames {
+    private final List<String> womanNames = Arrays.asList(
+            "Adelaida", "Barbara", "Bebe",
+            "Belkis", "Carie", "Charlesetta",
+            "Charlott", "Cheree", "Cleta",
+            "Cornelia", "Edwina", "Elizebeth",
+            "Franchesca", "Francoise", "Hiedi",
+            "Jetta", "Josphine", "Jovan",
+            "Julia", "Katelynn", "Kerrie",
+            "Latonia", "Laurel", "Leda",
+            "Louisa", "Margret", "Mazie",
+            "Micaela", "Minta", "Mirtha",
+            "Nam", "Naomi", "Nicki",
+            "Olga", "Perla", "Petra",
+            "Portia", "Racquel", "Sadie",
+            "Samella", "Sarah", "Sook",
+            "Stepanie", "Suzie", "Tessie",
+            "Theressa", "Thersa", "Tracee",
+            "Wei", "Zenobia");
+
+    public String getWomanName() {
+        return womanNames.get((int) (womanNames.size() * Math.random()));
+    }
 }

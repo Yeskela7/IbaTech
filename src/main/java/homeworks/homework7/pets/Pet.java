@@ -3,6 +3,7 @@ package homeworks.homework7.pets;
 
 import homeworks.homework7.Species;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public abstract class Pet {
@@ -19,6 +20,10 @@ public abstract class Pet {
 
     public Species getSpecies() {
         return species;
+    }
+
+    public void setSpecies(Species species) {
+        this.species = species;
     }
 
     public int getAge() {
@@ -56,11 +61,19 @@ public abstract class Pet {
 
     abstract void respond();
 
-
+    @Override
+    public String toString() {
+        return "Pet{" + "species=" + species +
+                ", nickname='" + nickname + '\'' +
+                ", age=" + age +
+                ", trickLevel=" + trickLevel +
+                ", habits=" + Arrays.toString(habits) +
+                '}';
+    }
 
     @Override
     public boolean equals(Object that) {
-        if(this.hashCode() == that.hashCode()) return true;
+        if (this.hashCode() == that.hashCode()) return true;
         if (that == null || getClass() != that.getClass()) return false;
         if (this == that) return true;
         Pet pet = (Pet) that;
@@ -74,6 +87,7 @@ public abstract class Pet {
     public int hashCode() {
         return species.hashCode() * age * nickname.hashCode() * trickLevel * -11;
     }
+
     @Override
     protected void finalize() throws Throwable {
         System.out.println("finalize " + this);

@@ -17,7 +17,11 @@ public final class Woman extends Human {
         super(name, surname, year, iq, schedule);
     }
 
-    void greetPet() {
+    public void greetPet() {
         System.out.printf("Hello, %s\n", getFamily().getPet().getNickname());
+    }
+
+    public void makeup() {
+        System.out.println("Makeup time!");
     }
 }

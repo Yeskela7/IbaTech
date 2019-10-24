@@ -19,7 +19,8 @@ public class Tests {
     public void before() {
         this.father = new Human("Pablo", "Escobar", 1949);
         this.mother = new Human("Victoria", "Escobar", 1955);
-        this.child1 = new Human("Juan", "Escobar", 1977, 120, new String[][]{{DayOfWeek.MONDAY.name(), "Task_1"}, {DayOfWeek.THURSDAY.name(), "Task_2"}});
+        this.child1 = new Human("Juan", "Escobar", 1977, 120,
+                new String[][]{{DayOfWeek.MONDAY.name(), "Task_1"}, {DayOfWeek.THURSDAY.name(), "Task_2"}});
         this.family = new Family(father, mother);
     }
 

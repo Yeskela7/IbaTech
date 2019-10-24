@@ -20,4 +20,8 @@ public final class Man extends Human {
     void greetPet() {
         System.out.printf("Hello, %s\n", getFamily().getPet().getNickname());
     }
+
+    public void repairCar() {
+        System.out.println("I'll repair my summer car");
+    }
 }

@@ -1,21 +1,30 @@
 package homeworks.homework7.humans;
 
-public enum ManNames {
-    Alex, Percy, Elton,
-    Reed, Arnoldo, Hector,
-    Adan, Kelvin, Garland,
-    Newton, Stefan, Stanford,
-    Danny, Casey, Santos,
-    Sammie, Edison, Millard,
-    Matthew, Odis, Jeremiah,
-    Wayne, Damion, Aubrey,
-    Armand, August, Modesto,
-    Bernard, Angelo, Marcus,
-    Leo, Kenton, Russell,
-    Adolph, Milan, Xavier,
-    Clay, Neville, Clyde,
-    Frankie, Tod, Mikel,
-    Forest, Jacob, Clair,
-    Dante, Thanh, Paul,
-    Hilton, Foster,
+import java.util.List;
+import java.util.Arrays;
+
+public class ManNames {
+
+    private final List<String> manNames = Arrays.asList(
+            "Adan", "Adolph", "Alex",
+            "Angelo", "Armand", "Arnoldo",
+            "Aubrey", "August", "Bernard",
+            "Casey", "Clair", "Clay",
+            "Clyde", "Damion", "Danny",
+            "Dante", "Edison", "Elton",
+            "Forest", "Foster", "Frankie",
+            "Garland", "Hector", "Hilton",
+            "Jacob", "Jeremiah", "Kelvin",
+            "Kenton", "Leo", "Marcus",
+            "Matthew", "Mikel", "Milan",
+            "Millard", "Modesto", "Neville",
+            "Newton", "Odis", "Paul",
+            "Percy", "Reed", "Russell",
+            "Sammie", "Santos", "Stanford",
+            "Stefan", "Thanh", "Tod",
+            "Wayne", "Xavier");
+
+    public String getManName() {
+        return manNames.get((int) (manNames.size() * Math.random()));
+    }
 }

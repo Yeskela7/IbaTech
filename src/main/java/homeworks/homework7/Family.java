@@ -1,12 +1,12 @@
 package homeworks.homework7;
 
-import homeworks.homework7.humans.Human;
+import homeworks.homework7.humans.*;
 import homeworks.homework7.pets.Pet;
 
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Family {
+public class Family implements HumanCreator {
 
     private Human father;
     private Human mother;
@@ -30,11 +30,6 @@ public class Family {
         return children;
     }
 
-    public void setChildren(Human[] children) {
-        this.children = children;
-    }
-
-
     public Family(Human father, Human mother) {
         this.father = father;
         this.mother = mother;
@@ -42,9 +37,16 @@ public class Family {
         this.pet = pet;
         father.setFamily(this);
         mother.setFamily(this);
-
     }
 
+    public Family(Human father, Human mother, Pet pet) {
+        this.father = father;
+        this.mother = mother;
+        this.children = new Human[0];
+        this.pet = pet;
+        father.setFamily(this);
+        mother.setFamily(this);
+    }
 
     public void addChild(Human child) {
         this.children = Arrays.copyOf(children, children.length + 1);
@@ -69,34 +71,36 @@ public class Family {
 
     @Override
     public String toString() {
-        if (this.children.length == 0 && pet.getSpecies() == null) {
+        if (this.children.length == 0 && pet == null) {
             return "Family{" + "father=" + father +
-                    ", mother=" + mother +
+                    ",\n mother=" + mother +
+                    ",\n people in family=" + this.countFamily() +
                     '}';
-        } else if (this.children.length == 0 && pet.getSpecies() != null) {
+        } else if (this.children.length == 0 && pet != null) {
             return "Family{" + "father=" + father +
-                    ", mother=" + mother +
-                    ", pet=" + pet +
+                    ",\n mother=" + mother +
+                    ",\n pet=" + pet +
+                    ", people in family=" + this.countFamily() +
                     '}';
-        } else if (this.children.length != 0 && pet.getSpecies() == null) {
+        } else if (this.children.length != 0 && pet == null) {
             return "Family{" + "father=" + father +
-                    ", mother=" + mother +
-                    ", children=" + Arrays.toString(children) +
+                    ",\n mother=" + mother +
+                    ",\n children=" + Arrays.toString(children) +
                     ", people in family=" + this.countFamily() +
                     '}';
         } else {
             return "Family{" + "father=" + father +
-                    ", mother=" + mother +
-                    ", pet=" + pet +
-                    ", children=" + Arrays.toString(children) +
+                    ",\n mother=" + mother +
+                    ",\n pet=" + pet +
+                    ",\n children=" + Arrays.toString(children) +
+                    ", people in family=" + this.countFamily() +
                     '}';
         }
     }
 
-
     @Override
     public boolean equals(Object that) {
-        if(this.hashCode() == that.hashCode()) return true;
+        if (this.hashCode() == that.hashCode()) return true;
         if (that == null || getClass() != that.getClass()) return false;
         if (this == that) return true;
         Family family = (Family) that;
@@ -116,5 +120,20 @@ public class Family {
     protected void finalize() throws Throwable {
         System.out.println(this);
         super.finalize();
+    }
+
+    public void bornChild() {
+        int random = (int) (Math.random() * 100);
+        int iq = (father.getIq() + mother.getIq()) / 2;
+        int year = (int) (Math.random() * 20 + 1990);
+        if (random <= 50) {
+            ManNames name = new ManNames();
+            Man childMan = new Man(name.getManName(), father.getSurname(), year, iq);
+            this.addChild(childMan);
+        } else {
+            WomanNames name = new WomanNames();
+            Woman childWoman = new Woman(name.getWomanName(), father.getSurname(), year, iq);
+            this.addChild(childWoman);
+        }
     }
 }

@@ -1,8 +1,8 @@
 package homework7;
 
-import homeworks.homework7.DayOfWeek;
 import homeworks.homework7.Family;
-import homeworks.homework7.humans.Human;
+import homeworks.homework7.humans.Man;
+import homeworks.homework7.humans.Woman;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,56 +10,55 @@ import static org.junit.Assert.assertEquals;
 
 public class Tests {
 
-    private Human father;
-    private Human mother;
-    private Human child1;
+    private Man father;
+    private Woman mother;
     private Family family;
-    private String[][] schedule;
 
     @Before
     public void before() {
-        this.father = new Human("Pablo", "Escobar", 1949);
-        this.mother = new Human("Victoria", "Escobar", 1955);
-        this.child1 = new Human("Juan", "Escobar", 1977, 120, new String[][]{{DayOfWeek.MONDAY.name(), "Task_1"}, {DayOfWeek.THURSDAY.name(), "Task_2"}});
+        this.father = new Man("Pablo", "Escobar", 1949, 151);
+        this.mother = new Woman("Victoria", "Escobar", 1955, 140);
         this.family = new Family(father, mother);
     }
 
     @Test
-    public void toStringTest() {
-        assertEquals("Human{name='Pablo', surname='Escobar', year=1949}", father.toString());
-        System.out.println("toString test Passed");
+    public void testBornChild() {
+        family.bornChild();
+        assertEquals(3, family.countFamily());
+        System.out.println("BornChild test Passed");
     }
 
     @Test
-    public void checkAddChild() {
-        family.addChild(child1);
-        assertEquals(1, family.getChildren().length);
-        assertEquals(family, child1.getFamily());
-        System.out.println("addChild test Passed");
+    public void testChildSurname() {
+        family.bornChild();
+        String chldSurname = family.getChildren()[0].getSurname();
+        assertEquals(family.getFather().getSurname(), chldSurname);
     }
 
+    @Test
+    public void testAvrgIq() {
+        family.bornChild();
+        int childIq = family.getChildren()[0].getIq();
+        assertEquals(145, childIq);
+        System.out.println("AvrgIq test Passed");
+    }
 
     @Test
-    public void checkDeleteChild() {
-        family.addChild(child1);
-        assertEquals(1, family.getChildren().length);
+    public void testDeleteAfterBorn() {
+        family.bornChild();
         family.deleteChild(0);
-        assertEquals(0, family.getChildren().length);
-        System.out.println("deleteChild1 test Passed");
-    }
-
-    @Test
-    public void checkDeleteChild2() {
-        family.addChild(child1);
-        assertEquals(1, family.getChildren().length);
-        family.deleteChild(1);
-        assertEquals(1, family.getChildren().length);
-        System.out.println("deleteChild2 test Passed");
+        assertEquals(2, family.countFamily());
+        System.out.println("deleteChild test Passed");
     }
 
     @Test
     public void countFamily() {
-        assertEquals(2, family.countFamily());
+        family.bornChild();
+        family.bornChild();
+        family.bornChild();
+        assertEquals(5, family.countFamily());
         System.out.println("countFamily test Passed");
     }
+
+
 }
