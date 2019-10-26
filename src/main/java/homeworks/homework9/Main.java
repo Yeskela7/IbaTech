@@ -1,6 +1,8 @@
 package homeworks.homework9;
 
 import homeworks.homework9.DaoSystem.CollectionFamilyDao;
+import homeworks.homework9.DaoSystem.FamilyDao;
+import homeworks.homework9.DaoSystem.FamilyService;
 import homeworks.homework9.family.Family;
 import homeworks.homework9.humans.Man;
 import homeworks.homework9.humans.Woman;
@@ -28,17 +30,17 @@ public class Main {
 
         Family sen = new Family(father, mother);
         Family sen1 = new Family(father1, mother1);
-        CollectionFamilyDao list = new CollectionFamilyDao();
+        FamilyService list = new FamilyService();
         list.saveFamily(sen);
         list.saveFamily(sen1);
         list.bornChild(sen,"Markus","Sara");
         list.bornChild(sen,"Tom","Flora");
-        list.getAllFamilies();
+        list.displayAllFamilies();
         list.deleteAllChildrenOlderThen(20);
-        list.getAllFamilies();
+        list.displayAllFamilies();
         list.count();
         list.addPet(1,dog);
-        list.getAllFamilies();
+        list.displayAllFamilies();
 
     }
 }

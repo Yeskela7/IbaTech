@@ -34,7 +34,7 @@ public class Family implements HumanCreator {
         this.father = father;
         this.mother = mother;
         this.children = new ArrayList<>();
-        this.pet = pet;
+        this.pet = new ArrayList<>();
         father.setFamily(this);
         mother.setFamily(this);
     }
