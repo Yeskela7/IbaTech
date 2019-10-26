@@ -11,7 +11,7 @@ public class Family implements HumanCreator {
 
     private Human father;
     private Human mother;
-    private Pet pet;
+    private ArrayList <Pet> pet;
     private List<Human> children;
 
     public Human getFather() {
@@ -22,7 +22,7 @@ public class Family implements HumanCreator {
         return mother;
     }
 
-    public Pet getPet() {
+    public ArrayList<Pet> getPet() {
         return pet;
     }
 
@@ -31,15 +31,6 @@ public class Family implements HumanCreator {
     }
 
     public Family(Human father, Human mother) {
-        this.father = father;
-        this.mother = mother;
-        this.children = new ArrayList<>();
-        this.pet = pet;
-        father.setFamily(this);
-        mother.setFamily(this);
-    }
-
-    public Family(Human father, Human mother, Pet pet) {
         this.father = father;
         this.mother = mother;
         this.children = new ArrayList<>();
@@ -65,24 +56,24 @@ public class Family implements HumanCreator {
     @Override
     public String toString() {
         if (this.children.size() == 0 && pet == null) {
-            return "\nFamily{" + "father=" + father +
+            return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", people in family=" + this.countFamily() +
                     "}";
         } else if (this.children.size() == 0 && pet != null) {
-            return "\nFamily{" + "father=" + father +
+            return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", pet=" + pet +
                     ", people in family=" + this.countFamily() +
                     "}";
         } else if (this.children.size() != 0 && pet == null) {
-            return "\nFamily{" + "father=" + father +
+            return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", children=" + children +
                     ", people in family=" + this.countFamily() +
                     "}";
         } else {
-            return "\nFamily{" + "father=" + father +
+            return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", pet=" + pet +
                     ", children=" + children +
@@ -117,7 +108,7 @@ public class Family implements HumanCreator {
     public void bornChild() {
         int random = (int) (Math.random() * 100);
         int iq = (father.getIq() + mother.getIq()) / 2;
-        int year = (int) (Math.random() * 20 + 1990);
+        int year = (int) (Math.random() * 10 + 18 + mother.getYear());
         if (random <= 50) {
             ManNames name = new ManNames();
             Man childMan = new Man(name.getManName(), father.getSurname(), year, iq);

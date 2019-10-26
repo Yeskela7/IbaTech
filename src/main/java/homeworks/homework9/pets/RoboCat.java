@@ -1,7 +1,5 @@
 package homeworks.homework9.pets;
 
-import homeworks.homework9.Species;
-
 import java.util.Set;
 
 public final class RoboCat extends Pet implements Foulible {

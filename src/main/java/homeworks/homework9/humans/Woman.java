@@ -22,7 +22,7 @@ public final class Woman extends Human {
     }
 
     public void greetPet() {
-        System.out.printf("Hello, %s\n", getFamily().getPet().getNickname());
+        System.out.printf("Hello, %s\n", this.getPet().getNickname());
     }
 
     public void makeup() {

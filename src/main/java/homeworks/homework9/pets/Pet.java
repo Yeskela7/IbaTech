@@ -1,8 +1,6 @@
 package homeworks.homework9.pets;
 
 
-import homeworks.homework9.Species;
-
 import java.util.Objects;
 import java.util.Set;
 

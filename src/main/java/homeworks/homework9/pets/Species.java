@@ -1,4 +1,4 @@
-package homeworks.homework9;
+package homeworks.homework9.pets;
 
 public enum Species {
     DOG(false, 4, true),

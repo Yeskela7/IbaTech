@@ -26,6 +26,10 @@ public class Human {
         this.family = family;
     }
 
+    public Pet getPet() {
+        return pet;
+    }
+
     public Map<DayOfWeek, String> getSchedule() {
         return schedule;
     }
@@ -60,6 +64,10 @@ public class Human {
 
     public int getIq() {
         return iq;
+    }
+
+    public int getYear() {
+        return year;
     }
 
     boolean feedPet() {
