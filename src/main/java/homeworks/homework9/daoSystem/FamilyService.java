@@ -15,17 +15,24 @@ public class FamilyService{
     }
 
     public void displayAllFamilies() {
-        familyDao.getAllFamilies().forEach(family -> System.out.printf("Index: %d %s \n",getAllFamilies().indexOf(family),family));
+        familyDao.getAllFamilies().forEach(family ->
+                System.out.printf("Index: %d %s \n",getAllFamilies().indexOf(family),family));
     }
 
-    public void getFamiliesBiggerThan(int familySize) {
-        familyDao.getAllFamilies().forEach(family -> { if(family.countFamily() > familySize)
-        {System.out.println(family); }});
+    public ArrayList<Family> getFamiliesBiggerThan(int familySize) {
+        ArrayList<Family> familiesBiggerThan = new ArrayList<>();
+        familyDao.getAllFamilies().forEach(family ->
+        {if(family.countFamily() > familySize) familiesBiggerThan.add(family);});
+        System.out.println(familiesBiggerThan);
+        return familiesBiggerThan;
     }
 
-    public void getFamilyLessThan(int familySize) {
-        familyDao.getAllFamilies().forEach(family -> { if(family.countFamily() < familySize)
-        {System.out.println(family); }});
+    public ArrayList<Family> getFamilyLessThan(int familySize) {
+        ArrayList<Family> familiesLessThan = new ArrayList<>();
+        familyDao.getAllFamilies().forEach(family ->
+        { if(family.countFamily() < familySize) familiesLessThan.add(family);});
+        System.out.println(familiesLessThan);
+        return familiesLessThan;
     }
 
     public int countFamiliesWithMemberNumber(int familySize) {
@@ -34,14 +41,15 @@ public class FamilyService{
     }
 
     public void createNewFamily(Human human1, Human human2) {
-        familyDao.saveFamily(new Family(human1, human2));
+        Family family = new Family(human1, human2);
+        familyDao.saveFamily(family);
     }
 
     public void deleteFamilyByIndex(int index){
         familyDao.deleteFamily(index);
     }
 
-    public void bornChild(Family family, String manName, String womanName) {
+    public Family bornChild(Family family, String manName, String womanName) {
         int random = (int) (Math.random() * 100);
         int iq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
         int year = (int) (Math.random() * 10 + 18 + family.getMother().getYear());
@@ -52,7 +60,7 @@ public class FamilyService{
             Woman childWoman = new Woman(womanName, family.getFather().getSurname(), year, iq);
             family.addChild(childWoman);
         }
-        familyDao.saveFamily(family);
+        return familyDao.saveFamily(family);
     }
 
     public Family adoptChild(Family family, Human child) {
@@ -63,7 +71,7 @@ public class FamilyService{
 
     public void deleteAllChildrenOlderThen(int age) {
         for (Family family : familyDao.getAllFamilies()) {
-            family.getChildren().removeIf(human -> (2020 - human.getYear()) < age);
+            family.getChildren().removeIf(human -> (2020 - human.getYear()) > age);
             familyDao.saveFamily(family);
         }
     }
@@ -73,7 +81,7 @@ public class FamilyService{
     }
 
     public Family getFamilyById(int index){
-        return familyDao.getAllFamilies().get(index);
+        return familyDao.getFamilyByIndex(index);
     }
 
     public ArrayList<Pet> getPets(int index) {
@@ -83,5 +91,9 @@ public class FamilyService{
     public void addPet(int index, Pet pet) {
         familyDao.getAllFamilies().get(index).getPet().add(pet);
         familyDao.saveFamily(familyDao.getAllFamilies().get(index));
+    }
+
+    public void addFamily(Family family){
+        familyDao.saveFamily(family);
     }
 }

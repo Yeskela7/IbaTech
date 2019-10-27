@@ -11,7 +11,7 @@ public class Family implements HumanCreator {
 
     private Human father;
     private Human mother;
-    private ArrayList <Pet> pet;
+    private ArrayList<Pet> pet;
     private List<Human> children;
 
     public Human getFather() {
@@ -55,30 +55,30 @@ public class Family implements HumanCreator {
 
     @Override
     public String toString() {
-        if (this.children.size() == 0 && pet == null) {
+        if (this.children.size() == 0 && pet.size() == 0) {
             return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", people in family=" + this.countFamily() +
-                    "}";
-        } else if (this.children.size() == 0 && pet != null) {
+                    "}\n";
+        } else if (this.children.size() == 0 && pet.size() != 0) {
             return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", pet=" + pet +
                     ", people in family=" + this.countFamily() +
-                    "}";
-        } else if (this.children.size() != 0 && pet == null) {
+                    "}\n";
+        } else if (this.children.size() != 0 && pet.size() == 0) {
             return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", children=" + children +
                     ", people in family=" + this.countFamily() +
-                    "}";
+                    "}\n";
         } else {
             return "Family{" + "father=" + father +
                     ", mother=" + mother +
                     ", pet=" + pet +
                     ", children=" + children +
                     ", people in family=" + this.countFamily() +
-                    "}";
+                    "}\n";
         }
     }
 

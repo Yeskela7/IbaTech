@@ -6,14 +6,14 @@ import java.util.List;
 
 public interface FamilyDao {
 
-    public List<Family> getAllFamilies();
+    List<Family> getAllFamilies();
 
-    public Family getFamilyByIndex(int index);
+    Family getFamilyByIndex(int index);
 
-    public boolean deleteFamily(int index);
+    boolean deleteFamily(int index);
 
-    public boolean deleteFamily(Family family);
+    boolean deleteFamily(Family family);
 
-    public Family saveFamily(Family family);
+    Family saveFamily(Family family);
 
 }
