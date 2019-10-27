@@ -1,9 +1,6 @@
 package homeworks.homework9;
 
-import homeworks.homework9.DaoSystem.CollectionFamilyDao;
-import homeworks.homework9.DaoSystem.FamilyDao;
-import homeworks.homework9.DaoSystem.FamilyService;
-import homeworks.homework9.family.Family;
+import homeworks.homework9.daoSystem.FamilyService;
 import homeworks.homework9.humans.Man;
 import homeworks.homework9.humans.Woman;
 import homeworks.homework9.pets.Dog;
@@ -28,19 +25,18 @@ public class Main {
         Man father1 = new Man("Victor", "Sinra", 1915, 121);
         Woman mother1 = new Woman("Samanta", "Sinra", 1919, 110);
 
-        Family sen = new Family(father, mother);
-        Family sen1 = new Family(father1, mother1);
         FamilyService list = new FamilyService();
-        list.saveFamily(sen);
-        list.saveFamily(sen1);
-        list.bornChild(sen,"Markus","Sara");
-        list.bornChild(sen,"Tom","Flora");
+        list.createNewFamily(father,mother);
+        list.createNewFamily(father1,mother1);
+        System.out.println(list.countFamiliesWithMemberNumber(2));
+//        list.bornChild(sen,"Markus","Sara");
+//        list.bornChild(sen,"Tom","Flora");
         list.displayAllFamilies();
-        list.deleteAllChildrenOlderThen(20);
-        list.displayAllFamilies();
-        list.count();
-        list.addPet(1,dog);
-        list.displayAllFamilies();
+        list.getFamiliesBiggerThan(2);
+//        list.displayAllFamilies();
+//        list.count();
+//        list.addPet(1,dog);
+//        list.displayAllFamilies();
 
     }
 }
