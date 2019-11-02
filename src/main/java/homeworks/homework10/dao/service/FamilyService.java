@@ -1,8 +1,10 @@
-package homeworks.homework9.daoSystem;
+package homeworks.homework10.dao.service;
 
-import homeworks.homework9.family.Family;
-import homeworks.homework9.humans.*;
-import homeworks.homework9.pets.Pet;
+import homeworks.homework10.dao.interfaces.FamilyDao;
+import homeworks.homework10.dao.collection.CollectionFamilyDao;
+import homeworks.homework10.family.Family;
+import homeworks.homework10.humans.*;
+import homeworks.homework10.pets.Pet;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,7 @@
-package homeworks.homework9.daoSystem;
+package homeworks.homework10.dao.collection;
 
-import homeworks.homework9.family.Family;
+import homeworks.homework10.dao.interfaces.FamilyDao;
+import homeworks.homework10.family.Family;
 
 import java.util.ArrayList;
 import java.util.List;

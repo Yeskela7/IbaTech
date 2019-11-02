@@ -1,7 +1,7 @@
 package homework9;
 
-import homeworks.homework9.daoSystem.CollectionFamilyDao;
-import homeworks.homework9.daoSystem.FamilyService;
+import homeworks.homework9.dao.collection.CollectionFamilyDao;
+import homeworks.homework9.dao.service.FamilyService;
 import homeworks.homework9.family.Family;
 import homeworks.homework9.humans.Man;
 import homeworks.homework9.humans.Woman;

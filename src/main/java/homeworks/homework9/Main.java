@@ -1,6 +1,6 @@
 package homeworks.homework9;
 
-import homeworks.homework9.daoSystem.FamilyController;
+import homeworks.homework9.dao.controller.FamilyController;
 import homeworks.homework9.family.Family;
 import homeworks.homework9.humans.Man;
 import homeworks.homework9.humans.Woman;

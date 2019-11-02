@@ -1,4 +1,4 @@
-package homeworks.homework9.daoSystem;
+package homeworks.homework9.dao.interfaces;
 
 import homeworks.homework9.family.Family;
 
