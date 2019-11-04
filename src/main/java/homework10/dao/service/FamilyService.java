@@ -1,4 +1,4 @@
-package homeworks.homework10.dao.service;
+package homework10.dao.service;
 
 import homeworks.homework10.dao.interfaces.FamilyDao;
 import homeworks.homework10.dao.collection.CollectionFamilyDao;

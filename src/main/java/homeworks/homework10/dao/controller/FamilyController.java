@@ -1,6 +1,6 @@
 package homeworks.homework10.dao.controller;
 
-import homeworks.homework10.dao.service.FamilyService;
+import homework10.dao.service.FamilyService;
 import homeworks.homework10.family.Family;
 import homeworks.homework10.humans.Human;
 import homeworks.homework10.pets.Pet;
