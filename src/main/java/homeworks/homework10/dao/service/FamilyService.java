@@ -1,17 +1,16 @@
-package homework10.dao.service;
+package homeworks.homework10.dao.service;
 
-import homeworks.homework10.DateConverter;
-import homeworks.homework10.dao.interfaces.FamilyDao;
-import homeworks.homework10.dao.collection.CollectionFamilyDao;
-import homeworks.homework10.family.Family;
-import homeworks.homework10.humans.*;
-import homeworks.homework10.pets.Pet;
+import homeworks.homework9.dao.collection.CollectionFamilyDao;
+import homeworks.homework9.dao.interfaces.FamilyDao;
+import homeworks.homework9.family.Family;
+import homeworks.homework9.humans.Human;
+import homeworks.homework9.humans.Man;
+import homeworks.homework9.humans.Woman;
+import homeworks.homework9.pets.Pet;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Calendar;
 
-public class FamilyService{
+public class FamilyService {
 
     private FamilyDao familyDao = new CollectionFamilyDao();
 
@@ -54,10 +53,10 @@ public class FamilyService{
         familyDao.deleteFamily(index);
     }
 
-    public Family bornChild(Family family, String manName, String womanName) throws ParseException {
+    public Family bornChild(Family family, String manName, String womanName) {
         int random = (int) (Math.random() * 100);
         int iq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
-        String year = DateConverter.millsToString(Calendar.getInstance().getTimeInMillis());
+        int year = (int) (Math.random() * 10 + 18 + family.getMother().getYear());
         if (random <= 50) {
             Man childMan = new Man(manName, family.getFather().getSurname(), year, iq);
             family.addChild(childMan);
@@ -70,14 +69,13 @@ public class FamilyService{
 
     public Family adoptChild(Family family, Human child) {
         family.addChild(child);
-        child.setSurname(family.getFather().getSurname());
         familyDao.saveFamily(family);
         return family;
     }
 
     public void deleteAllChildrenOlderThen(int age) {
         for (Family family : familyDao.getAllFamilies()) {
-            family.getChildren().removeIf(human -> (2020 - human.getAge()) > age);
+            family.getChildren().removeIf(human -> (2020 - human.getYear()) > age);
             familyDao.saveFamily(family);
         }
     }

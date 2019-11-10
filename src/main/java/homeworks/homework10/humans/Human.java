@@ -1,9 +1,12 @@
 package homeworks.homework10.humans;
 
+import homeworks.homework10.DateConverter;
 import homeworks.homework10.DayOfWeek;
 import homeworks.homework10.family.Family;
 import homeworks.homework10.pets.Pet;
 
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
@@ -11,7 +14,7 @@ import java.util.Random;
 public class Human {
     private String name;
     private String surname;
-    private int year;
+    private long birthDate;
     private int iq;
     private Pet pet;
     private Map<DayOfWeek, String> schedule;
@@ -20,6 +23,10 @@ public class Human {
 
     public Family getFamily() {
         return family;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     public void setFamily(Family family) {
@@ -34,26 +41,27 @@ public class Human {
         return schedule;
     }
 
-    public Human(String name, String surname, int year) {
+    public Human(String name, String surname, String birthDate) throws ParseException {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = DateConverter.stringToMills(birthDate);
     }
 
     public Human() {
     }
 
-    public Human(String name, String surname, int year, int iq) {
+    public Human(String name, String surname, String birthDate, int iq) throws ParseException {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = DateConverter.stringToMills(birthDate);
         this.iq = iq;
     }
 
-    public Human(String name, String surname, int year, int iq, Map<DayOfWeek, String> schedule) {
+    public Human(String name, String surname, String birthDate, int iq, Map<DayOfWeek, String> schedule)
+            throws ParseException {
         this.name = name;
         this.surname = surname;
-        this.year = year;
+        this.birthDate = DateConverter.stringToMills(birthDate);
         this.iq = iq;
         this.schedule = schedule;
     }
@@ -66,8 +74,21 @@ public class Human {
         return iq;
     }
 
-    public int getYear() {
-        return year;
+    public int getAge(){
+        Calendar calendar = Calendar.getInstance();
+        long def = calendar.getTimeInMillis() - this.birthDate;
+        calendar.setTimeInMillis(def);
+        return calendar.get(Calendar.YEAR) - 1970;
+    }
+
+    public String describeAge() {
+        Calendar calendar = Calendar.getInstance();
+        long def = calendar.getTimeInMillis() - this.birthDate;
+        calendar.setTimeInMillis(def);
+        int year = calendar.get(Calendar.YEAR) - 1970;
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH) - 1;
+        return year + " year " + month + " month " + day + " day";
     }
 
     boolean feedPet() {
@@ -103,14 +124,14 @@ public class Human {
         if (that == null || getClass() != that.getClass()) return false;
         if (this == that) return true;
         Human human = (Human) that;
-        return year == human.year &&
+        return birthDate == human.birthDate &&
                 Objects.equals(name, human.name) &&
                 Objects.equals(surname, human.surname);
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode() * surname.hashCode() * year * -11;
+        return (int) (name.hashCode() * surname.hashCode() * birthDate * -11);
     }
 
     @Override
@@ -127,20 +148,20 @@ public class Human {
             return this.getClass().getSimpleName() +
                     "{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
-                    ", year=" + year +
+                    ", birthDate=" + DateConverter.format(birthDate) +
                     "}";
         } else if (schedule == null) {
             return this.getClass().getSimpleName() +
                     "{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
-                    ", year=" + year +
+                    ", birthDate=" + DateConverter.format(birthDate) +
                     ", iq=" + iq +
                     "}";
         } else {
             return this.getClass().getSimpleName() +
                     "{" + "name='" + name + '\'' +
                     ", surname='" + surname + '\'' +
-                    ", year=" + year +
+                    ", birthDate=" + DateConverter.format(birthDate) +
                     ", iq=" + iq +
                     ", schedule=" + schedule +
                     "}";

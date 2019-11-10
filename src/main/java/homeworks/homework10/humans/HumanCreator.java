@@ -1,6 +1,8 @@
 package homeworks.homework10.humans;
 
+import java.text.ParseException;
+
 public interface HumanCreator {
 
-    void bornChild();
+    void bornChild() throws ParseException;
 }

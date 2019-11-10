@@ -5,6 +5,7 @@ import homeworks.homework10.family.Family;
 import homeworks.homework10.humans.Human;
 import homeworks.homework10.pets.Pet;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class FamilyController {
@@ -39,7 +40,7 @@ public class FamilyController {
         familyService.deleteFamilyByIndex(index);
     }
 
-    public Family bornChild(Family family, String manName, String womanName) {
+    public Family bornChild(Family family, String manName, String womanName) throws ParseException {
         return familyService.bornChild(family, manName, womanName);
     }
 

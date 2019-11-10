@@ -1,9 +1,12 @@
 package homeworks.homework10.family;
 
+import homeworks.homework10.DateConverter;
 import homeworks.homework10.humans.*;
 import homeworks.homework10.pets.Pet;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -105,10 +108,10 @@ public class Family implements HumanCreator {
         super.finalize();
     }
 
-    public void bornChild() {
+    public void bornChild() throws ParseException {
         int random = (int) (Math.random() * 100);
         int iq = (father.getIq() + mother.getIq()) / 2;
-        int year = (int) (Math.random() * 10 + 18 + mother.getYear());
+        String year = DateConverter.millsToString(Calendar.getInstance().getTimeInMillis());
         if (random <= 50) {
             ManNames name = new ManNames();
             Man childMan = new Man(name.getManName(), father.getSurname(), year, iq);

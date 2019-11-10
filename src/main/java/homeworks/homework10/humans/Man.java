@@ -1,25 +1,26 @@
 package homeworks.homework10.humans;
 
 import homeworks.homework10.DayOfWeek;
-import homeworks.homework10.humans.Human;
 
+import java.text.ParseException;
 import java.util.Map;
 
 public final class Man extends Human {
 
-    public Man(String name, String surname, int year) {
-        super(name, surname, year);
+    public Man(String name, String surname, String birthDate) throws ParseException {
+        super(name, surname, birthDate);
     }
 
     public Man() {
     }
 
-    public Man(String name, String surname, int year, int iq) {
-        super(name, surname, year, iq);
+    public Man(String name, String surname, String birthDate, int iq) throws ParseException {
+        super(name, surname, birthDate, iq);
     }
 
-    public Man(String name, String surname, int year, int iq, Map<DayOfWeek, String> schedule) {
-        super(name, surname, year, iq, schedule);
+    public Man(String name, String surname, String birthDate, int iq, Map<DayOfWeek, String> schedule)
+            throws ParseException {
+        super(name, surname, birthDate, iq, schedule);
     }
 
     void greetPet() {
