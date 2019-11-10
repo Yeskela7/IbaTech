@@ -27,4 +27,6 @@ public class ManNames {
     public String getManName() {
         return manNames.get((int) (manNames.size() * Math.random()));
     }
+
+
 }

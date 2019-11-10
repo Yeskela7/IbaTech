@@ -2,6 +2,8 @@ package homeworks.homework12;
 
 import homeworks.homework12.dao.controller.FamilyController;
 import homeworks.homework12.family.Family;
+import homeworks.homework12.family.FamilyBuilder;
+import homeworks.homework12.humans.RandomHumanBuilder;
 import homeworks.homework12.humans.Man;
 import homeworks.homework12.humans.Woman;
 import homeworks.homework12.pets.Dog;
@@ -37,6 +39,9 @@ public class Main {
         controller.adoptChild(family, child);
         controller.displayAllFamilies();
 
+        controller.createFamilies(10);
+
+        controller.displayAllFamilies();
 
     }
 }

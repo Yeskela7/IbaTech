@@ -71,4 +71,8 @@ public class FamilyController {
     public void addFamily(Family family) {
         familyService.addFamily(family);
     }
+
+    public void createFamilies(int number) throws ParseException{
+        familyService.createFamilies(number);
+    }
 }

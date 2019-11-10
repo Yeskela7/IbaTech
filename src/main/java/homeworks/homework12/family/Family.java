@@ -8,7 +8,6 @@ import homeworks.homework12.pets.Pet;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Objects;
 
 public class Family implements HumanCreator, Printable {
@@ -30,7 +29,7 @@ public class Family implements HumanCreator, Printable {
         return pet;
     }
 
-    public List<Human> getChildren() {
+    public ArrayList<Human> getChildren() {
         return children;
     }
 
@@ -103,7 +102,7 @@ public class Family implements HumanCreator, Printable {
     @Override
     public String prettyFormat() {
         if (this.children.size() == 0 && pet.size() == 0) {
-            return "Family\n" + " Father: " + father +
+            return "Family\n" + "Father: " + father +
                     "\nMother: " + mother +
                     "\nPeople in family: " + this.countFamily();
         } else if (this.children.size() == 0 && pet.size() != 0) {
@@ -125,12 +124,12 @@ public class Family implements HumanCreator, Printable {
         }
     }
 
-    private StringBuilder childPrettyFormat(ArrayList<Human> children){
-        StringBuilder result= new StringBuilder();
-        for (Human child: children){
-            if(child instanceof Man){
+    private StringBuilder childPrettyFormat(ArrayList<Human> children) {
+        StringBuilder result = new StringBuilder();
+        for (Human child : children) {
+            if (child instanceof Man) {
                 result.append("\n--- boy: ").append(child.prettyFormat());
-            } else{
+            } else {
                 result.append("\n--- girl: ").append(child.prettyFormat());
             }
         }
