@@ -1,14 +1,15 @@
-package homeworks.homework10.dao.service;
+package homework10.dao.service;
 
-import homeworks.homework9.dao.collection.CollectionFamilyDao;
-import homeworks.homework9.dao.interfaces.FamilyDao;
-import homeworks.homework9.family.Family;
-import homeworks.homework9.humans.Human;
-import homeworks.homework9.humans.Man;
-import homeworks.homework9.humans.Woman;
-import homeworks.homework9.pets.Pet;
+import homeworks.homework10.DateConverter;
+import homeworks.homework10.dao.interfaces.FamilyDao;
+import homeworks.homework10.dao.collection.CollectionFamilyDao;
+import homeworks.homework10.family.Family;
+import homeworks.homework10.humans.*;
+import homeworks.homework10.pets.Pet;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class FamilyService {
 
@@ -20,13 +21,15 @@ public class FamilyService {
 
     public void displayAllFamilies() {
         familyDao.getAllFamilies().forEach(family ->
-                System.out.printf("Index: %d %s \n",getAllFamilies().indexOf(family),family));
+                System.out.printf("Index: %d %s \n", getAllFamilies().indexOf(family), family));
     }
 
     public ArrayList<Family> getFamiliesBiggerThan(int familySize) {
         ArrayList<Family> familiesBiggerThan = new ArrayList<>();
         familyDao.getAllFamilies().forEach(family ->
-        {if(family.countFamily() > familySize) familiesBiggerThan.add(family);});
+        {
+            if (family.countFamily() > familySize) familiesBiggerThan.add(family);
+        });
         System.out.println(familiesBiggerThan);
         return familiesBiggerThan;
     }
@@ -34,7 +37,9 @@ public class FamilyService {
     public ArrayList<Family> getFamilyLessThan(int familySize) {
         ArrayList<Family> familiesLessThan = new ArrayList<>();
         familyDao.getAllFamilies().forEach(family ->
-        { if(family.countFamily() < familySize) familiesLessThan.add(family);});
+        {
+            if (family.countFamily() < familySize) familiesLessThan.add(family);
+        });
         System.out.println(familiesLessThan);
         return familiesLessThan;
     }
@@ -49,14 +54,14 @@ public class FamilyService {
         familyDao.saveFamily(family);
     }
 
-    public void deleteFamilyByIndex(int index){
+    public void deleteFamilyByIndex(int index) {
         familyDao.deleteFamily(index);
     }
 
-    public Family bornChild(Family family, String manName, String womanName) {
+    public Family bornChild(Family family, String manName, String womanName) throws ParseException {
         int random = (int) (Math.random() * 100);
         int iq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
-        int year = (int) (Math.random() * 10 + 18 + family.getMother().getYear());
+        String year = DateConverter.millsToString(Calendar.getInstance().getTimeInMillis());
         if (random <= 50) {
             Man childMan = new Man(manName, family.getFather().getSurname(), year, iq);
             family.addChild(childMan);
@@ -69,13 +74,14 @@ public class FamilyService {
 
     public Family adoptChild(Family family, Human child) {
         family.addChild(child);
+        child.setSurname(family.getFather().getSurname());
         familyDao.saveFamily(family);
         return family;
     }
 
     public void deleteAllChildrenOlderThen(int age) {
         for (Family family : familyDao.getAllFamilies()) {
-            family.getChildren().removeIf(human -> (2020 - human.getYear()) > age);
+            family.getChildren().removeIf(human -> (2020 - human.getAge()) > age);
             familyDao.saveFamily(family);
         }
     }
@@ -84,7 +90,7 @@ public class FamilyService {
         return familyDao.getAllFamilies().size();
     }
 
-    public Family getFamilyById(int index){
+    public Family getFamilyById(int index) {
         return familyDao.getFamilyByIndex(index);
     }
 
@@ -97,7 +103,7 @@ public class FamilyService {
         familyDao.saveFamily(familyDao.getAllFamilies().get(index));
     }
 
-    public void addFamily(Family family){
+    public void addFamily(Family family) {
         familyDao.saveFamily(family);
     }
 }
