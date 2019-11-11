@@ -32,7 +32,7 @@ public class RandomHumanBuilder {
 
     private String withBirthDate() {
         birthDateInString = DateConverter.millsToString((long) (Calendar.getInstance().
-                getTimeInMillis() * ((Math.random() * 0.3) + 0.3)));
+                getTimeInMillis() * (Math.random() * 0.5)));
         return birthDateInString;
     }
 

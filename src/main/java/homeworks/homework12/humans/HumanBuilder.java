@@ -8,28 +8,31 @@ public class HumanBuilder {
     private String birthDateInString;
     private int iq;
 
-    public HumanBuilder withName(String enter){
+    public HumanBuilder withName(String enter) {
         name = enter;
         return this;
     }
-    public HumanBuilder withSurname(String enterSurname){
+
+    public HumanBuilder withSurname(String enterSurname) {
         surname = enterSurname;
         return this;
     }
-    public HumanBuilder withDate(String enterDate){
+
+    public HumanBuilder withDate(String enterDate) {
         birthDateInString = enterDate;
         return this;
     }
-    public HumanBuilder withIq(int enterIq){
+
+    public HumanBuilder withIq(int enterIq) {
         iq = enterIq;
         return this;
     }
 
     public Man buildMan() throws ParseException {
-        return new Man(name,surname,birthDateInString,iq);
+        return new Man(name, surname, birthDateInString, iq);
     }
 
     public Woman buildWoman() throws ParseException {
-        return new Woman(name,surname,birthDateInString,iq);
+        return new Woman(name, surname, birthDateInString, iq);
     }
 }

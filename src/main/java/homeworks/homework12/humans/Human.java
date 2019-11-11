@@ -43,7 +43,6 @@ public class Human implements Printable {
     }
 
 
-
     public Human() {
     }
 
@@ -77,7 +76,7 @@ public class Human implements Printable {
         return iq;
     }
 
-    public int getAge(){
+    public int getAge() {
         Calendar calendar = Calendar.getInstance();
         long def = calendar.getTimeInMillis() - this.birthDate;
         calendar.setTimeInMillis(def);

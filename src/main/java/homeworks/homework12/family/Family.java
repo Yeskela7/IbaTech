@@ -87,7 +87,8 @@ public class Family implements HumanCreator, Printable {
     public void bornChild() throws ParseException {
         int random = (int) (Math.random() * 100);
         int iq = (father.getIq() + mother.getIq()) / 2;
-        String year = DateConverter.millsToString(Calendar.getInstance().getTimeInMillis());
+        String year = DateConverter.millsToString((long) (Calendar.getInstance().
+                getTimeInMillis() * ((Math.random() * 0.3) + 0.7)));
         if (random <= 50) {
             ManNames name = new ManNames();
             Man childMan = new Man(name.getManName(), father.getSurname(), year, iq);
@@ -99,7 +100,7 @@ public class Family implements HumanCreator, Printable {
         }
     }
 
-    private String decorator(){
+    private String decorator() {
         return "-------------------------".repeat(5);
     }
 
@@ -133,7 +134,7 @@ public class Family implements HumanCreator, Printable {
         for (Human child : children) {
             if (child instanceof Man) {
                 result.append("\n      boy: ").append(child.prettyFormat());
-            } else if (child instanceof Woman){
+            } else if (child instanceof Woman) {
                 result.append("\n      girl: ").append(child.prettyFormat());
             } else {
                 result.append("\n      child: ").append(child.prettyFormat());

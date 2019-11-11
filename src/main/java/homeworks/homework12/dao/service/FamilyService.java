@@ -13,7 +13,6 @@ import homeworks.homework12.pets.Pet;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.stream.Collectors;
 
 public class FamilyService {
 
@@ -30,7 +29,7 @@ public class FamilyService {
     }
 
     public void getFamiliesBiggerThan(int familySize) {
-                familyDao.getAllFamilies().stream().filter(family -> family.countFamily() > familySize).forEach(System.out::println);
+        familyDao.getAllFamilies().stream().filter(family -> family.countFamily() > familySize).forEach(System.out::println);
     }
 
     public void getFamilyLessThan(int familySize) {
@@ -53,15 +52,15 @@ public class FamilyService {
 
     public Family bornChild(int index, String manName, String womanName) throws ParseException {
         int random = (int) (Math.random() * 100);
-        Family family = familyDao.getFamilyByIndex(index);
+        Family family = familyDao.getFamilyByIndex(index - 1);
         int iq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
         String year = DateConverter.millsToString((long) (Calendar.getInstance().
-                getTimeInMillis() * ((Math.random()*0.3)+0.7)));
+                getTimeInMillis() * ((Math.random() * 0.3) + 0.7)));
         if (random <= 50) {
             Man childMan = new Man(manName, family.getFather().getSurname(), year, iq);
             family.addChild(childMan);
         } else {
-            Woman childWoman = new Woman(womanName, family.getFather().getSurname(),  year, iq);
+            Woman childWoman = new Woman(womanName, family.getFather().getSurname(), year, iq);
             family.addChild(childWoman);
         }
         return familyDao.saveFamily(family);
@@ -105,11 +104,11 @@ public class FamilyService {
 
     public void createFamilies(int number) throws ParseException {
         FamilyBuilder familyBuilder = new FamilyBuilder();
-        for (int i = 0; i < number ; i++) {
+        for (int i = 0; i < number; i++) {
             Family family = familyBuilder.build();
             int chance = (int) (Math.random() * 100);
-            if(chance > 45) family.bornChild();
-            if (chance > 75)family.bornChild();
+            if (chance > 45) family.bornChild();
+            if (chance > 75) family.bornChild();
             familyDao.saveFamily(family);
         }
     }

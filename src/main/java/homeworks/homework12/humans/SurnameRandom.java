@@ -6,7 +6,7 @@ import java.util.List;
 public class SurnameRandom {
     private final List<String> SurnameList = Arrays.asList(
             "Corbin", "Rollins", "Gibson ", "Navarro ",
-            "Hardy","Sparks", "Williams", "Gallagher", "Preston",
+            "Hardy", "Sparks", "Williams", "Gallagher", "Preston",
             "Foley", "Parks", "Downs", "Mejia", "Waller", "Delacruz",
             "Ray", "Melton", "Miranda", "Miles", "Leonard", "Donovan",
             "Marquez", "Wolfe", "Johns", "Peck", "Sosa", "Collins",

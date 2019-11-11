@@ -24,7 +24,8 @@ public class FamilyController {
         familyService.getFamiliesBiggerThan(size);
     }
 
-    public void getFamilyLessThan(int size) { familyService.getFamilyLessThan(size);
+    public void getFamilyLessThan(int size) {
+        familyService.getFamilyLessThan(size);
     }
 
     public int countFamiliesWithMemberNumber(int familySize) {
@@ -71,7 +72,7 @@ public class FamilyController {
         familyService.addFamily(family);
     }
 
-    public void createFamilies(int number) throws ParseException{
+    public void createFamilies(int number) throws ParseException {
         familyService.createFamilies(number);
     }
 }
