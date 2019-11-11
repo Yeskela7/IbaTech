@@ -20,12 +20,11 @@ public class FamilyController {
         familyService.displayAllFamilies();
     }
 
-    public ArrayList<Family> getFamiliesBiggerThan(int size) {
-        return familyService.getFamiliesBiggerThan(size);
+    public void getFamiliesBiggerThan(int size) {
+        familyService.getFamiliesBiggerThan(size);
     }
 
-    public ArrayList<Family> getFamilyLessThan(int size) {
-        return familyService.getFamilyLessThan(size);
+    public void getFamilyLessThan(int size) { familyService.getFamilyLessThan(size);
     }
 
     public int countFamiliesWithMemberNumber(int familySize) {

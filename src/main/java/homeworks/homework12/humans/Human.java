@@ -42,13 +42,15 @@ public class Human implements Printable {
         return schedule;
     }
 
+
+
+    public Human() {
+    }
+
     public Human(String name, String surname, String birthDate) throws ParseException {
         this.name = name;
         this.surname = surname;
         this.birthDate = DateConverter.stringToMills(birthDate);
-    }
-
-    public Human() {
     }
 
     public Human(String name, String surname, String birthDate, int iq) throws ParseException {

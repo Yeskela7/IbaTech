@@ -133,8 +133,10 @@ public class Family implements HumanCreator, Printable {
         for (Human child : children) {
             if (child instanceof Man) {
                 result.append("\n      boy: ").append(child.prettyFormat());
-            } else {
+            } else if (child instanceof Woman){
                 result.append("\n      girl: ").append(child.prettyFormat());
+            } else {
+                result.append("\n      child: ").append(child.prettyFormat());
             }
         }
         return result;

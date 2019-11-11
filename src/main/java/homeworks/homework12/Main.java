@@ -17,15 +17,9 @@ public class Main {
     public static void main(String[] args) throws ParseException {
 
 
-        FamilyController controller= new FamilyController();
+        Console console=new Console();
+        console.console();
 
-
-        controller.createFamilies(10);
-
-        controller.displayAllFamilies();
-        controller.createFamilies(10);
-        controller.displayAllFamilies();
-        System.out.println(controller.getFamilyById(2));
 
     }
 }

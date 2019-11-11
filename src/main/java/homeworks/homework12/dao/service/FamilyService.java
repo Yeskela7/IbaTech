@@ -13,6 +13,7 @@ import homeworks.homework12.pets.Pet;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.stream.Collectors;
 
 public class FamilyService {
 
@@ -28,24 +29,12 @@ public class FamilyService {
                         family.getFather().getSurname(), family));
     }
 
-    public ArrayList<Family> getFamiliesBiggerThan(int familySize) {
-        ArrayList<Family> familiesBiggerThan = new ArrayList<>();
-        familyDao.getAllFamilies().forEach(family ->
-        {
-            if (family.countFamily() > familySize) familiesBiggerThan.add(family);
-        });
-        System.out.println(familiesBiggerThan);
-        return familiesBiggerThan;
+    public void getFamiliesBiggerThan(int familySize) {
+                familyDao.getAllFamilies().stream().filter(family -> family.countFamily() > familySize).forEach(System.out::println);
     }
 
-    public ArrayList<Family> getFamilyLessThan(int familySize) {
-        ArrayList<Family> familiesLessThan = new ArrayList<>();
-        familyDao.getAllFamilies().forEach(family ->
-        {
-            if (family.countFamily() < familySize) familiesLessThan.add(family);
-        });
-        System.out.println(familiesLessThan);
-        return familiesLessThan;
+    public void getFamilyLessThan(int familySize) {
+        familyDao.getAllFamilies().stream().filter(family -> family.countFamily() < familySize).forEach(System.out::println);
     }
 
     public int countFamiliesWithMemberNumber(int familySize) {
