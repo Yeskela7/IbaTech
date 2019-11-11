@@ -40,12 +40,12 @@ public class FamilyController {
         familyService.deleteFamilyByIndex(index);
     }
 
-    public Family bornChild(Family family, String manName, String womanName) throws ParseException {
-        return familyService.bornChild(family, manName, womanName);
+    public Family bornChild(int index, String manName, String womanName) throws ParseException {
+        return familyService.bornChild(index, manName, womanName);
     }
 
-    public Family adoptChild(Family family, Human child) {
-        return familyService.adoptChild(family, child);
+    public Family adoptChild(int index, Human child) {
+        return familyService.adoptChild(index, child);
     }
 
     public void deleteAllChildrenOlderThen(int age) {

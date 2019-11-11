@@ -12,32 +12,32 @@ public class RandomHumanBuilder {
     private String birthDateInString;
     private int iq;
 
-    public RandomHumanBuilder withManName() {
+    private RandomHumanBuilder withManName() {
         ManNames name = new ManNames();
         manName = name.getManName();
         return this;
     }
 
-    public RandomHumanBuilder withWomanName() {
+    private RandomHumanBuilder withWomanName() {
         WomanNames name = new WomanNames();
         womanName = name.getWomanName();
         return this;
     }
 
-    public RandomHumanBuilder withSurname() {
+    private RandomHumanBuilder withSurname() {
         SurnameRandom surnameRandom = new SurnameRandom();
         surname = surnameRandom.getRandomSurname();
         return this;
     }
 
-    public String withBirthDate() {
+    private String withBirthDate() {
         birthDateInString = DateConverter.millsToString((long) (Calendar.getInstance().
                 getTimeInMillis() * ((Math.random() * 0.3) + 0.3)));
         return birthDateInString;
     }
 
-    public RandomHumanBuilder withIq() {
-        iq = (int) (Math.random() * 80 + 80);
+    private RandomHumanBuilder withIq() {
+        iq = (int) (Math.random() * 100 + 60);
         return this;
     }
 

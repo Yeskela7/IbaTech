@@ -99,28 +99,32 @@ public class Family implements HumanCreator, Printable {
         }
     }
 
+    private String decorator(){
+        return "-------------------------".repeat(5);
+    }
+
     @Override
     public String prettyFormat() {
         if (this.children.size() == 0 && pet.size() == 0) {
             return "Family\n" + "Father: " + father +
                     "\nMother: " + mother +
-                    "\nPeople in family: " + this.countFamily();
+                    "\nPeople in family: " + this.countFamily() + "\n" + decorator();
         } else if (this.children.size() == 0 && pet.size() != 0) {
             return "Family\n" + " Father: " + father +
                     "\nMother: " + mother +
                     "\nPet: " + pet +
-                    "\nPeople in family: " + this.countFamily();
+                    "\nPeople in family: " + this.countFamily() + "\n" + decorator();
         } else if (this.children.size() != 0 && pet.size() == 0) {
             return "Family\n" + "Father: " + father +
                     "\nMother: " + mother +
                     "\nChildren: " + childPrettyFormat(children) +
-                    "\nPeople in family: " + this.countFamily();
+                    "\nPeople in family: " + this.countFamily() + "\n" + decorator();
         } else {
             return "Family\n" + "Father: " + father +
                     "\nMother: " + mother +
                     "\nPet: " + pet +
                     "\nChildren: " + childPrettyFormat(children) +
-                    "\nPeople in family: " + this.countFamily();
+                    "\nPeople in family: " + this.countFamily() + "\n" + decorator();
         }
     }
 
@@ -128,9 +132,9 @@ public class Family implements HumanCreator, Printable {
         StringBuilder result = new StringBuilder();
         for (Human child : children) {
             if (child instanceof Man) {
-                result.append("\n--- boy: ").append(child.prettyFormat());
+                result.append("\n      boy: ").append(child.prettyFormat());
             } else {
-                result.append("\n--- girl: ").append(child.prettyFormat());
+                result.append("\n      girl: ").append(child.prettyFormat());
             }
         }
         return result;

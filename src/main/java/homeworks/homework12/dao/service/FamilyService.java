@@ -62,8 +62,9 @@ public class FamilyService {
         familyDao.deleteFamily(index - 1);
     }
 
-    public Family bornChild(Family family, String manName, String womanName) throws ParseException {
+    public Family bornChild(int index, String manName, String womanName) throws ParseException {
         int random = (int) (Math.random() * 100);
+        Family family = familyDao.getFamilyByIndex(index);
         int iq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
         String year = DateConverter.millsToString((long) (Calendar.getInstance().
                 getTimeInMillis() * ((Math.random()*0.3)+0.7)));
@@ -77,7 +78,8 @@ public class FamilyService {
         return familyDao.saveFamily(family);
     }
 
-    public Family adoptChild(Family family, Human child) {
+    public Family adoptChild(int index, Human child) {
+        Family family = familyDao.getFamilyByIndex(index);
         family.addChild(child);
         child.setSurname(family.getFather().getSurname());
         familyDao.saveFamily(family);
@@ -86,7 +88,7 @@ public class FamilyService {
 
     public void deleteAllChildrenOlderThen(int age) {
         for (Family family : familyDao.getAllFamilies()) {
-            family.getChildren().removeIf(human -> (2020 - human.getAge()) > age);
+            family.getChildren().removeIf(human -> (Calendar.YEAR - human.getAge()) > age);
             familyDao.saveFamily(family);
         }
     }
@@ -116,9 +118,9 @@ public class FamilyService {
         FamilyBuilder familyBuilder = new FamilyBuilder();
         for (int i = 0; i < number ; i++) {
             Family family = familyBuilder.build();
-            if((int) (Math.random() * 100) >= 50){
-                family.bornChild();
-            }
+            int chance = (int) (Math.random() * 100);
+            if(chance > 45) family.bornChild();
+            if (chance > 75)family.bornChild();
             familyDao.saveFamily(family);
         }
     }
