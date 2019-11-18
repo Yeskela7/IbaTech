@@ -1,6 +1,5 @@
 package homeworks.homework12.pets;
 
-
 import homeworks.homework12.Printable;
 
 import java.util.Objects;

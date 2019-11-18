@@ -7,17 +7,16 @@ import homeworks.homework12.humans.Man;
 import homeworks.homework12.humans.Woman;
 
 import java.text.ParseException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
 
     public void console() throws ParseException {
-        int command = -1;
         FamilyController controller = new FamilyController();
-        while (command != 0) {
+        while (true) {
             message(listOfCommand());
-            command = inputId("");
-            switch (command) {
+            switch (inputId("Enter the command")) {
                 case 1:
                     controller.createFamilies(10);
                     break;
@@ -25,16 +24,13 @@ public class Console {
                     controller.displayAllFamilies();
                     break;
                 case 3:
-                    int bigger = inputId("number of member: ");
-                    controller.getFamiliesBiggerThan(bigger);
+                    controller.getFamiliesBiggerThan(inputId("Enter number of member: "));
                     break;
                 case 4:
-                    int less = inputId("number of member: ");
-                    controller.getFamilyLessThan(less);
+                    controller.getFamilyLessThan(inputId("Enter number of member: "));
                     break;
                 case 5:
-                    int number = inputId("number of people in family: ");
-                    System.out.println(controller.countFamiliesWithMemberNumber(number));
+                    System.out.println(controller.countFamiliesWithMemberNumber(inputId("Enter number of people in family: ")));
                     break;
                 case 6:
                     Man father = dataAboutFather();
@@ -42,34 +38,31 @@ public class Console {
                     controller.createNewFamily(father, mother);
                     break;
                 case 7:
-                    int id = inputId("family Id to delete");
-                    controller.deleteFamilyByIndex(id);
+                    controller.deleteFamilyByIndex(inputId("Enter family Id to delete"));
                     break;
                 case 8:
-                    int c = inputId("next command.\n'1' - born child\n'2' - adopt child\n'3' - back to menu\n");
+                    int c = inputId("Enter next command.\n'1' - born child\n'2' - adopt child\n'3' - back to menu\n");
                     switch (c) {
                         case 1:
-                            int indexV = inputId("family id");
-                            String m = inputString("name for boy ");
-                            String w = inputString("name for girl ");
-                            controller.bornChild(indexV, m, w);
+                            controller.bornChild(inputId("Enter family id"),
+                                    inputString("Enter name for boy "),
+                                    inputString("Enter name for girl "));
                             break;
                         case 2:
-                            int indexT = inputId("family id ");
-                            Human child = dataAboutChild("child ");
-                            controller.adoptChild(indexT, child);
+                            controller.adoptChild(inputId("Enter family id "), dataAboutChild());
                             break;
                         case 3:
-                            command = -1;
                             break;
                     }
-                    ;
                     break;
                 case 9:
                     int ageFilter = inputId("age filter");
                     controller.deleteAllChildrenOlderThen(ageFilter);
                     break;
+                case -1: message("Incorrect input");
+                    break;
                 case 0:
+                    System.exit(0);
                     break;
             }
         }
@@ -94,13 +87,13 @@ public class Console {
         HumanBuilder hb = new HumanBuilder();
         Scanner in = new Scanner(System.in);
         message("Please, enter info about father\n");
-        message("name: ");
+        message("Enter name: ");
         String name = in.nextLine();
-        message("surname: ");
+        message("Enter surname: ");
         String surname = in.nextLine();
-        message("birth Date in format (dd/MM/yyyy): ");
+        message("Enter birth Date in format (dd/MM/yyyy): ");
         String birthDate = in.nextLine();
-        message("Iq: ");
+        message("Enter Iq: ");
         int iq = in.nextInt();
         return new Man(name, surname, birthDate, iq);
     }
@@ -109,26 +102,26 @@ public class Console {
         HumanBuilder hb = new HumanBuilder();
         Scanner in = new Scanner(System.in);
         message("Please, enter info about mother\n");
-        message("name: ");
+        message("Enter name: ");
         String name = in.nextLine();
-        message("surname: ");
+        message("Enter surname: ");
         String surname = in.nextLine();
-        message("birth Date in format (dd/MM/yyyy): ");
+        message("Enter birth Date in format (dd/MM/yyyy): ");
         String birthDate = in.nextLine();
-        message("Iq: ");
+        message("Enter Iq: ");
         int iq = in.nextInt();
         return new Woman(name, surname, birthDate, iq);
     }
 
-    private static Human dataAboutChild(String s) throws ParseException {
+    private static Human dataAboutChild() throws ParseException {
         HumanBuilder hb = new HumanBuilder();
         Scanner in = new Scanner(System.in);
-        System.out.printf("Please, enter info about %s", s);
-        message("name: ");
+        message("Please, enter info about child ");
+        message("Enter name: ");
         String name = in.nextLine();
-        message("surname: ");
+        message("Enter surname: ");
         String surname = in.nextLine();
-        message("birth Date in format (dd/MM/yyyy): ");
+        message("Enter birth Date in format (dd/MM/yyyy): ");
         String birthDate = in.nextLine();
         return new Human(name, surname, birthDate);
     }
@@ -136,7 +129,11 @@ public class Console {
     private static int inputId(String s) {
         Scanner in = new Scanner(System.in);
         message(s);
-        return in.nextInt();
+        try {
+            return in.nextInt();
+        } catch (InputMismatchException ex) {
+            return -1;
+        }
     }
 
     private static String inputString(String s) {
@@ -146,6 +143,6 @@ public class Console {
     }
 
     private static void message(String s) {
-        System.out.printf("Enter %s", s);
+        System.out.println(s);
     }
 }

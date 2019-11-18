@@ -18,9 +18,6 @@ public final class HiddenData implements Iterable<String> {
   private final int[] data2 = new int[] {1,2,3,4};
 
   public Iterator<Integer> iterator_data2() {
-//    Iterator<String> iterator1 = data.iterator();
-//    Iterator<Integer> iterator2 = data2.iterator();
-
     Iterator<Integer> myIterator = new Iterator<Integer>() {
       int current = 0;
 

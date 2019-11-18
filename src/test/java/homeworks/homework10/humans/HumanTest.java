@@ -19,7 +19,7 @@ class HumanTest {
 
     @Test
     void describeAge() {
-        assertEquals("31 year 5 month 7 day",man.describeAge());
+        assertEquals("31 year 5 month 16 day",man.describeAge());
     }
 
     @Test

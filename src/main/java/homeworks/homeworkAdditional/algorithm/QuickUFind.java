@@ -1,7 +1,5 @@
 package homeworks.homeworkAdditional.algorithm;
 
-import java.lang.reflect.Array;
-
 public class QuickUFind {
 
     private int[] id;

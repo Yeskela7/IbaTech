@@ -6,7 +6,6 @@ public class Sorting {
     public static void selectionSort(int[] xArr){
 
         for (int i = 0; i < xArr.length; i++) {
-            //temp int init
             int min = xArr[i];
             int min_i = i;
             for (int j = i +1; j < xArr.length ; j++) {

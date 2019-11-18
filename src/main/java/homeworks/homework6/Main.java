@@ -1,7 +1,5 @@
 package homeworks.homework6;
 
-
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -11,12 +9,6 @@ public class Main {
         Human father = new Human("Frank", "Sinatra", 1915);
         Human mother = new Human("Barbara", "Sinatra", 1919);
         Human child1 = new Human("Nancy", "Sinatra", 1940, 100, new String[][]{{DayOfWeek.MONDAY.name(), "Task_1"}, {DayOfWeek.THURSDAY.name(), "Task_2"}});
-
-//        System.out.println("Checking start");
-//        for (int i = 0; i < 1000000; i++) {
-//            Human human = new Human("Fin", "Alize", i);
-//            System.out.println(human);
-//        }
 
         System.out.println(child1);
         System.out.println(father);

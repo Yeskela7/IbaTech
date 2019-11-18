@@ -1,6 +1,5 @@
 package homeworks.homework6;
 
-
 import java.util.Objects;
 
 public class Pet {
