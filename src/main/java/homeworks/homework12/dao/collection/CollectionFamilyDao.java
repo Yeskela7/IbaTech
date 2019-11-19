@@ -19,7 +19,6 @@ public class CollectionFamilyDao implements FamilyDao {
         try {
             return familyList.get(index);
         } catch (IndexOutOfBoundsException ex) {
-            System.out.println("Wrong Index");
             return null;
         }
     }

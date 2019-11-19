@@ -19,6 +19,7 @@ public class Console {
             switch (inputId("Enter the command")) {
                 case 1:
                     controller.createFamilies(10);
+                    message("Test data created");
                     break;
                 case 2:
                     controller.displayAllFamilies();
@@ -30,12 +31,15 @@ public class Console {
                     controller.getFamilyLessThan(inputId("Enter number of member: "));
                     break;
                 case 5:
-                    System.out.println(controller.countFamiliesWithMemberNumber(inputId("Enter number of people in family: ")));
+                    System.out.println(controller.countFamiliesWithMemberNumber
+                            (inputId("Enter number of people in family: ")));
                     break;
                 case 6:
-                    Man father = dataAboutFather();
-                    Woman mother = dataAboutMother();
-                    controller.createNewFamily(father, mother);
+                    try {
+                        controller.createNewFamily(dataAboutFather(), dataAboutMother());
+                    } catch (Exception ex) {
+                        message("Incorrect input");
+                    }
                     break;
                 case 7:
                     controller.deleteFamilyByIndex(inputId("Enter family Id to delete"));
@@ -44,22 +48,31 @@ public class Console {
                     int c = inputId("Enter next command.\n'1' - born child\n'2' - adopt child\n'3' - back to menu\n");
                     switch (c) {
                         case 1:
-                            controller.bornChild(inputId("Enter family id"),
-                                    inputString("Enter name for boy "),
-                                    inputString("Enter name for girl "));
+                            try {
+                                controller.bornChild(inputId("Enter family id"),
+                                        inputString("Enter name for boy "),
+                                        inputString("Enter name for girl "));
+                            } catch (NullPointerException ex) {
+                                message("Wrong family index");
+                            }
                             break;
                         case 2:
-                            controller.adoptChild(inputId("Enter family id "), dataAboutChild());
+                            try {
+                                controller.adoptChild(inputId("Enter family id "), dataAboutChild());
+                            } catch (NullPointerException ex) {
+                                message("Wrong family index");
+                            }
                             break;
                         case 3:
                             break;
                     }
                     break;
                 case 9:
-                    int ageFilter = inputId("age filter");
+                    int ageFilter = inputId("Enter age filter");
                     controller.deleteAllChildrenOlderThen(ageFilter);
                     break;
-                case -1: message("Incorrect input");
+                case -1:
+                    message("Incorrect input");
                     break;
                 case 0:
                     System.exit(0);
@@ -69,7 +82,7 @@ public class Console {
     }
 
     private static String listOfCommand() {
-        final StringBuilder sb = new StringBuilder("your command:\n");
+        final StringBuilder sb = new StringBuilder("Main\n");
         sb.append("1 - Fill with test data\n");
         sb.append("2 - Display the entire list of families\n");
         sb.append("3 - Display a list of families where the number of people is greater than the specified number\n");
@@ -145,4 +158,5 @@ public class Console {
     private static void message(String s) {
         System.out.println(s);
     }
+
 }

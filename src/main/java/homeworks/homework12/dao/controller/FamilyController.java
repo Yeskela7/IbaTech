@@ -1,6 +1,7 @@
 package homeworks.homework12.dao.controller;
 
 import homeworks.homework12.dao.service.FamilyService;
+import homeworks.homework12.exceptions.FamilyOverflowException;
 import homeworks.homework12.family.Family;
 import homeworks.homework12.humans.Human;
 import homeworks.homework12.pets.Pet;
@@ -40,12 +41,20 @@ public class FamilyController {
         familyService.deleteFamilyByIndex(index);
     }
 
-    public Family bornChild(int index, String manName, String womanName) throws ParseException {
-        return familyService.bornChild(index, manName, womanName);
+    public void bornChild(int index, String manName, String womanName) throws ParseException {
+        try {
+            familyService.bornChild(index, manName, womanName);
+        } catch (FamilyOverflowException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
-    public Family adoptChild(int index, Human child) {
-        return familyService.adoptChild(index, child);
+    public void adoptChild(int index, Human child) {
+        try {
+            familyService.adoptChild(index, child);
+        } catch (FamilyOverflowException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public void deleteAllChildrenOlderThen(int age) {

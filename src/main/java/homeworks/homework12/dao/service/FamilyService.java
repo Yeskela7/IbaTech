@@ -3,6 +3,7 @@ package homeworks.homework12.dao.service;
 import homeworks.homework12.DateConverter;
 import homeworks.homework12.dao.collection.CollectionFamilyDao;
 import homeworks.homework12.dao.interfaces.FamilyDao;
+import homeworks.homework12.exceptions.FamilyOverflowException;
 import homeworks.homework12.family.Family;
 import homeworks.homework12.family.FamilyBuilder;
 import homeworks.homework12.humans.Human;
@@ -29,10 +30,12 @@ public class FamilyService {
     }
 
     public void getFamiliesBiggerThan(int familySize) {
+        if (familySize < 0) return;
         familyDao.getAllFamilies().stream().filter(family -> family.countFamily() > familySize).forEach(System.out::println);
     }
 
     public void getFamilyLessThan(int familySize) {
+        if (familySize < 0) return;
         familyDao.getAllFamilies().stream().filter(family -> family.countFamily() < familySize).forEach(System.out::println);
     }
 
@@ -50,9 +53,11 @@ public class FamilyService {
         familyDao.deleteFamily(index - 1);
     }
 
-    public Family bornChild(int index, String manName, String womanName) throws ParseException {
+    public void bornChild(int index, String manName, String womanName) throws ParseException {
         int random = (int) (Math.random() * 100);
         Family family = familyDao.getFamilyByIndex(index - 1);
+        if (family.countFamily() >= 4) throw new FamilyOverflowException
+                ("Family overflow, number of member must be no more than 4");
         int iq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
         String year = DateConverter.millsToString((long) (Calendar.getInstance().
                 getTimeInMillis() * ((Math.random() * 0.3) + 0.7)));
@@ -63,15 +68,16 @@ public class FamilyService {
             Woman childWoman = new Woman(womanName, family.getFather().getSurname(), year, iq);
             family.addChild(childWoman);
         }
-        return familyDao.saveFamily(family);
+        familyDao.saveFamily(family);
     }
 
-    public Family adoptChild(int index, Human child) {
-        Family family = familyDao.getFamilyByIndex(index);
+    public void adoptChild(int index, Human child) {
+        Family family = familyDao.getFamilyByIndex(index - 1);
+        if (family.countFamily() >= 4) throw new FamilyOverflowException
+                ("Family overflow, number of member must be no more than 4");
         family.addChild(child);
         child.setSurname(family.getFather().getSurname());
         familyDao.saveFamily(family);
-        return family;
     }
 
     public void deleteAllChildrenOlderThen(int age) {
