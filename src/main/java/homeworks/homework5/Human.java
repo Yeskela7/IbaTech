@@ -58,7 +58,6 @@ class Human {
     }
 
 
-
     @Override
     public String toString() {
         if (name == null) {
@@ -81,7 +80,6 @@ class Human {
                     ", schedule=" + Arrays.deepToString(schedule) +
                     "}";
         }
-
 
 
     }

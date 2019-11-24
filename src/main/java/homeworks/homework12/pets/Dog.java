@@ -23,7 +23,6 @@ public final class Dog extends Pet implements Foulible {
     }
 
 
-
     @Override
     public void foul() {
         System.out.println("I need to cover it up\n");

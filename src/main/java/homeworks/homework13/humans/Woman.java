@@ -1,6 +1,6 @@
 package homeworks.homework13.humans;
 
-import homeworks.homework13.DayOfWeek;
+import homeworks.homework13.Date.DayOfWeek;
 
 import java.text.ParseException;
 import java.util.Map;

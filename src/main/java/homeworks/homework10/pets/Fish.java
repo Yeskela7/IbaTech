@@ -1,8 +1,5 @@
 package homeworks.homework10.pets;
 
-import homeworks.homework10.pets.Pet;
-import homeworks.homework10.pets.Species;
-
 import java.util.Set;
 
 public final class Fish extends Pet {

@@ -1,7 +1,7 @@
 package homeworks.homework13.humans;
 
-import homeworks.homework13.DateConverter;
-import homeworks.homework13.DayOfWeek;
+import homeworks.homework13.Date.DateConverter;
+import homeworks.homework13.Date.DayOfWeek;
 import homeworks.homework13.Printable;
 import homeworks.homework13.family.Family;
 import homeworks.homework13.pets.Pet;

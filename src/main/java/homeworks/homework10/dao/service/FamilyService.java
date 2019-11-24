@@ -1,10 +1,12 @@
 package homeworks.homework10.dao.service;
 
 import homeworks.homework10.DateConverter;
-import homeworks.homework10.dao.interfaces.FamilyDao;
 import homeworks.homework10.dao.collection.CollectionFamilyDao;
+import homeworks.homework10.dao.interfaces.FamilyDao;
 import homeworks.homework10.family.Family;
-import homeworks.homework10.humans.*;
+import homeworks.homework10.humans.Human;
+import homeworks.homework10.humans.Man;
+import homeworks.homework10.humans.Woman;
 import homeworks.homework10.pets.Pet;
 
 import java.text.ParseException;
@@ -62,7 +64,7 @@ public class FamilyService {
         int random = (int) (Math.random() * 100);
         int iq = (family.getFather().getIq() + family.getMother().getIq()) / 2;
         String year = DateConverter.millsToString((long) (Calendar.getInstance()
-                .getTimeInMillis() * ((Math.random()*0.3)+0.7)));
+                .getTimeInMillis() * ((Math.random() * 0.3) + 0.7)));
         if (random <= 50) {
             Man childMan = new Man(manName, family.getFather().getSurname(), year, iq);
             family.addChild(childMan);

@@ -1,6 +1,6 @@
 package homeworks.homework13.humans;
 
-import homeworks.homework13.DateConverter;
+import homeworks.homework13.Date.DateConverter;
 
 import java.text.ParseException;
 import java.util.Calendar;

@@ -7,6 +7,7 @@ public class XtreeApp {
         xTree.add(10);
         xTree.add(15);
         xTree.add(21);
-        System.out.println(xTree);;
+        System.out.println(xTree);
+        ;
     }
 }

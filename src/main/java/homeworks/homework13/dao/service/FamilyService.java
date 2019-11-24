@@ -1,6 +1,6 @@
 package homeworks.homework13.dao.service;
 
-import homeworks.homework13.DateConverter;
+import homeworks.homework13.Date.DateConverter;
 import homeworks.homework13.dao.collection.CollectionFamilyDao;
 import homeworks.homework13.dao.interfaces.FamilyDao;
 import homeworks.homework13.exceptions.FamilyOverflowException;
@@ -117,6 +117,10 @@ public class FamilyService {
             if (chance > 75) family.bornChild();
             familyDao.saveFamily(family);
         }
+    }
+
+    public void load(ArrayList<Family> families) {
+        familyDao.loadData(families);
     }
 
 }

@@ -1,14 +1,16 @@
 package homeworks.homework9.dao.service;
 
-import homeworks.homework9.dao.interfaces.FamilyDao;
 import homeworks.homework9.dao.collection.CollectionFamilyDao;
+import homeworks.homework9.dao.interfaces.FamilyDao;
 import homeworks.homework9.family.Family;
-import homeworks.homework9.humans.*;
+import homeworks.homework9.humans.Human;
+import homeworks.homework9.humans.Man;
+import homeworks.homework9.humans.Woman;
 import homeworks.homework9.pets.Pet;
 
 import java.util.ArrayList;
 
-public class FamilyService{
+public class FamilyService {
 
     private FamilyDao familyDao = new CollectionFamilyDao();
 
@@ -18,13 +20,15 @@ public class FamilyService{
 
     public void displayAllFamilies() {
         familyDao.getAllFamilies().forEach(family ->
-                System.out.printf("Index: %d %s \n",getAllFamilies().indexOf(family),family));
+                System.out.printf("Index: %d %s \n", getAllFamilies().indexOf(family), family));
     }
 
     public ArrayList<Family> getFamiliesBiggerThan(int familySize) {
         ArrayList<Family> familiesBiggerThan = new ArrayList<>();
         familyDao.getAllFamilies().forEach(family ->
-        {if(family.countFamily() > familySize) familiesBiggerThan.add(family);});
+        {
+            if (family.countFamily() > familySize) familiesBiggerThan.add(family);
+        });
         System.out.println(familiesBiggerThan);
         return familiesBiggerThan;
     }
@@ -32,7 +36,9 @@ public class FamilyService{
     public ArrayList<Family> getFamilyLessThan(int familySize) {
         ArrayList<Family> familiesLessThan = new ArrayList<>();
         familyDao.getAllFamilies().forEach(family ->
-        { if(family.countFamily() < familySize) familiesLessThan.add(family);});
+        {
+            if (family.countFamily() < familySize) familiesLessThan.add(family);
+        });
         System.out.println(familiesLessThan);
         return familiesLessThan;
     }
@@ -47,7 +53,7 @@ public class FamilyService{
         familyDao.saveFamily(family);
     }
 
-    public void deleteFamilyByIndex(int index){
+    public void deleteFamilyByIndex(int index) {
         familyDao.deleteFamily(index);
     }
 
@@ -82,7 +88,7 @@ public class FamilyService{
         return familyDao.getAllFamilies().size();
     }
 
-    public Family getFamilyById(int index){
+    public Family getFamilyById(int index) {
         return familyDao.getFamilyByIndex(index);
     }
 
@@ -95,7 +101,7 @@ public class FamilyService{
         familyDao.saveFamily(familyDao.getAllFamilies().get(index));
     }
 
-    public void addFamily(Family family){
+    public void addFamily(Family family) {
         familyDao.saveFamily(family);
     }
 }

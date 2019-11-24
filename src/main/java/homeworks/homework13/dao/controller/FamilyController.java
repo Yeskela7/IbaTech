@@ -84,4 +84,8 @@ public class FamilyController {
     public void createFamilies(int number) throws ParseException {
         familyService.createFamilies(number);
     }
+
+    public void load(ArrayList<Family> families) {
+        familyService.load(families);
+    }
 }

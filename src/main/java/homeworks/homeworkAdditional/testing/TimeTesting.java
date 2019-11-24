@@ -27,8 +27,7 @@ public class TimeTesting {
     }
 
 
-
-    public static String getBirthDay(long birtDate){
+    public static String getBirthDay(long birtDate) {
         return formatForDateNow.format(birtDate);
     }
 

@@ -17,8 +17,8 @@ public class DateConverter {
     static long stringToMills(String string) throws ParseException {
         try {
             return formatForDate.parse(string).getTime();
-        } catch (ParseException ex){
-            throw new ParseException ("Incorrect input. enter date in format: dd/MM/yyyy",0);
+        } catch (ParseException ex) {
+            throw new ParseException("Incorrect input. enter date in format: dd/MM/yyyy", 0);
         }
     }
 

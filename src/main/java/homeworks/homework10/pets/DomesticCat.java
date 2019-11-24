@@ -1,9 +1,5 @@
 package homeworks.homework10.pets;
 
-import homeworks.homework10.pets.Foulible;
-import homeworks.homework10.pets.Pet;
-import homeworks.homework10.pets.Species;
-
 import java.util.Set;
 
 public final class DomesticCat extends Pet implements Foulible {

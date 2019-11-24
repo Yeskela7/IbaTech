@@ -5,23 +5,23 @@ import java.util.Scanner;
 public class TaskPlanner {
     public static void main(String[] args) {
         String[][] schedule = {
-                {"Sunday","Code",},
-                {"Monday","fix bags"},
-                {"Tuesday","look at new bags"},
-                {"Wednesday","lie down"},
-                {"Thursday","try not to cry"},
-                {"Friday","cry a lot"},
-                {"Saturday","try again"}};
+                {"Sunday", "Code",},
+                {"Monday", "fix bags"},
+                {"Tuesday", "look at new bags"},
+                {"Wednesday", "lie down"},
+                {"Thursday", "try not to cry"},
+                {"Friday", "cry a lot"},
+                {"Saturday", "try again"}};
 
         boolean input = true;
         Scanner in = new Scanner(System.in);
 
 
-        while(input){
+        while (input) {
             System.out.println("\nPlease, input the day of the week:");
             String inDay = in.nextLine();
             String[] command = inDay.split(" ");
-            switch (command[0].toLowerCase().trim()){
+            switch (command[0].toLowerCase().trim()) {
                 case "sunday":
                     System.out.printf("Your tasks for %s: %s", schedule[0][0], schedule[0][1]);
                     input = true;
@@ -71,13 +71,13 @@ public class TaskPlanner {
         Scanner in = new Scanner(System.in);
         for (int i = 0; i < array.length; i++) {
             if (day.equalsIgnoreCase(array[i][0])) {
-                System.out.printf("input your task for %s: ",array[i][0]);
+                System.out.printf("input your task for %s: ", array[i][0]);
                 array[1][i] = in.nextLine();
             }
         }
     }
 
-    private static void greetings(){
+    private static void greetings() {
         System.out.println("Enter day of week for view schedule or 'change + day' for changing task");
     }
 }
